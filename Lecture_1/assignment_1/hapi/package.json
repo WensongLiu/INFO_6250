@@ -1,0 +1,30 @@
+{
+  "name": "assignment_1",
+  "version": "1.0.0",
+  "description": "\"A simple web site with 3 pages of my most favourite song.\"  ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aPill1n1biza/INFO_6250.git"
+  },
+  "keywords": [
+    "hapi.js",
+    "html",
+    "css",
+    "javascript"
+  ],
+  "author": "@Wensong Liu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aPill1n1biza/INFO_6250/issues"
+  },
+  "homepage": "https://github.com/aPill1n1biza/INFO_6250#readme",
+  "dependencies": {
+    "hapi": "^17.8.1",
+    "hapi-pino": "^5.2.0",
+    "inert": "^5.1.2"
+  }
+}
