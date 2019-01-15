@@ -1,7 +1,7 @@
 <!doctype html>
 <html class="no-js" lang="">
 	<head>
-		<link rel="shortcut icon" href="./coldplay.jpg">
+		<link rel="shortcut icon" href="http://localhost:3000/coldplay.jpg">
 		<title>
 			Coldplay | Introduction
 		</title>
@@ -10,6 +10,12 @@
 			position:relative;
 			top:50px;
 			right:-0px;
+		}
+		#band_history{
+			text-align:center;
+		}
+		#container{
+			font-family:Georgia;
 		}
 		a:link {text-decoration:none;}    /* unvisited link */
 		a:visited {text-decoration:none;} /* visited link */
@@ -20,22 +26,20 @@
 
 	<body>
 		<div id="container" style="width:1400px">
-			<div id="band" style="margin-bottom:0">
-				<img src="./coldplay_band.jpg" alt="band" width="1400" height="380"><br/>
-				<h2 align="center"> Coldplay Introduction </h2>
-				<details>
-  					<summary>History:</summary>
-  					<p> 
-  						Coldplay are a British rock band formed in London in 1996.<br>
-  						The four members, lead singer and pianist <a href="https://en.wikipedia.org/wiki/Chris_Martin">Chris Martin</a>, lead guitarist <a href="https://en.wikipedia.org/wiki/Jonny_Buckland">Jonny Buckland</a>, bassist <a href="https://en.wikipedia.org/wiki/Guy_Berryman">Guy Berryman</a>, and drummer <a href="https://en.wikipedia.org/wiki/Will_Champion">Will Champion</a> were at University College London, and came together from 1996 to 1998.<br> 
-  						During which time the band changed names from Pectoralz, to Starfish, then Coldplay.<br>
-  						Creative director and former manager <a href="https://en.wikipedia.org/wiki/Phil_Harvey_(manager)">Phil Harvey</a> is often referred to as the fifth member by the band.
-  					</p>
-				</details>
+			<div id="band" style="margin-bottom:0;height:auto;min-height:700px">
+				<big>
+				<img src="http://localhost:3000/coldplay_band.jpg" alt="band" width="1400" height="380"><br/>
+				<h1 id="coldplay_header" align="center"><big><i> Coldplay | Introduction </i></h1>
+  				<p id="band_history"> 
+					Coldplay are a British rock band formed in London in 1996.<br>
+					The four members, lead singer and pianist <a href="https://en.wikipedia.org/wiki/Chris_Martin">Chris Martin</a>, lead guitarist <a href="https://en.wikipedia.org/wiki/Jonny_Buckland">Jonny Buckland</a>, bassist <a href="https://en.wikipedia.org/wiki/Guy_Berryman">Guy Berryman</a>, and drummer <a href="https://en.wikipedia.org/wiki/Will_Champion">Will Champion</a> were at University College London, and came together from 1996 to 1998.<br> 
+					During which time the band changed names from Pectoralz, to Starfish, then Coldplay.<br>
+					Creative director and former manager <a href="https://en.wikipedia.org/wiki/Phil_Harvey_(manager)">Phil Harvey</a> is often referred to as the fifth member by the band.
+  				</p>
 				<details>
   					<summary>Albums:</summary>
   					<p>
-						1999–2002: <a href="https://en.wikipedia.org/wiki/Parachutes_(album)">Parachutes</a><br>
+						1999–2002: <a href="http://localhost:3000/parachutes">Parachutes</a><br>
 						2002–2004: <a href="https://en.wikipedia.org/wiki/A_Rush_of_Blood_to_the_Head">A Rush of Blood to the Head</a><br>
 						2004–2007: <a href="https://en.wikipedia.org/wiki/X%26Y">X&Y</a><br>
 						2007–2010: <a href="https://en.wikipedia.org/wiki/Viva_la_Vida_or_Death_and_All_His_Friends">Viva la Vida or Death and All His Friends</a><br>
@@ -45,9 +49,9 @@
 					</p>
 				</details>
 				<details>
-  					<summary>Awards and nominations:</summary>
+  					<summary>Awards & Nominations:</summary>
   					<p>
-  						<img src="./celebration.gif" title="celebration" alt="celebration.gif" width="300" height="170" align="right">
+  						<img src="http://localhost:3000/celebration.gif" title="celebration" alt="celebration.gif" width="300" height="170" align="right">
 	  					Coldplay have won numerous music awards throughout their history, including:<br> 
 	  					the American Music Award, <br>
 	  					nine Brit Awards (including winning the Best British Group four times), <br>
@@ -60,6 +64,12 @@
 	  					Coldplay have sold over 100 million records worldwide.
   					</p>
 				</details>
+				</big>
+			</div>
+
+			<div id="footer" style="clear:both;text-align:center;">
+				 Copyright ©Wensong Liu<br/>
+				 Liu.wens@husky.neu.edu
 			</div>
 		</div>
 	</body>

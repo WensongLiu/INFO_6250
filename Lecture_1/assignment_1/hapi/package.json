@@ -25,6 +25,7 @@
   "dependencies": {
     "hapi": "^17.8.1",
     "hapi-pino": "^5.2.0",
-    "inert": "^5.1.2"
+    "inert": "^5.1.2",
+    "insert": "^1.0.1"
   }
 }
