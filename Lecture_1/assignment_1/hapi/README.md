@@ -1,5 +1,7 @@
 INFO 6250 Assignment 1
 =============
+## I build my server by Hapi.js and install a dependency called
+## inert to convert static resources readable by server.
 
 1. After entering the parent folder of this project, run the
 command “npm install” to install all dependencies this server
