@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{026B5C5B-F4A1-49FF-BBCA-451D6A8016F2}|Default">
+  <MonoDevelop.Ide.ItemProperties.assignment PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="wwwroot/style.css">
+    <Files>
+      <File FileName="Program.cs" Line="25" Column="1" />
+      <File FileName="Pages/Index.cshtml" Line="81" Column="52" />
+      <File FileName="wwwroot/style.css" Line="8" Column="17" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

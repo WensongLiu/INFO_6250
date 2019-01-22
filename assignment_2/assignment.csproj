@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
+  </PropertyGroup>
+
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\Shared\assignment2.cshtml" />
+    <Content Remove="wwwroot\js\EmptyJSFile.js" />
+    <Content Remove="wwwroot\site.css" />
+    <Content Remove="wwwroot\site.js" />
+    <Content Remove="wwwroot\style.css" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Pages\Shared\assignment2.cshtml.cs" />
+  </ItemGroup>
+</Project>

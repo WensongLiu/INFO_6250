@@ -1,0 +1,131 @@
+﻿@page
+@using System.Collections;
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Assignment_2 | INFO 6250</title>
+    <!-- "like" implement
+    <script typet="text/javascript" src="http://libs.baidu.com/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            $(".like").click(function () {
+                $(this).toggleClass('cs');
+            })
+        })
+    </script>
+    -->
+    <!-- import jQuery  -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous">
+    </script>
+    <!-- import jQuery-UI -->
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous">
+    </script>
+
+    <!-- css for jQuery-UI -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+
+</head>
+<body>
+    <div id="page" align="center">
+
+            <div id="header">
+                <div id="companyname" align="left">Counting Words Application</div>
+                <div align="right" class="links_menu" id="menu">by Wensong Liu(NUID:001898693)</div>
+            </div>
+            <br />
+            <div id="content">
+                <div id="leftpanel">
+                    <div class="table_top">
+                        <div align="center"><span class="title_panel">How to use.</span> </div>
+                    </div>
+                    <div class="table_content">
+                        <div class="table_text">
+                            <span class="news_text">Type all the words you want to count in the textarea, then click the button "submit", every distinct word's amount will be showed under textarea.</span><br />
+                            <span class="news_date">IMPORTANT: Only commas and periods are allowed !!!</span> <br />
+                        </div>
+                    </div>
+                    <div class="table_bottom">
+                        <img src="images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+                    </div>
+                    <br />
+                    <div class="table_top">
+                        <span class="title_panel">Instructor</span>
+                    </div>
+                    <div class="table_content">
+                        <div class="table_text">
+                            <span class="news_text">Dino Konstantopoulos</span>
+                            <br />
+                            <span class="news_text">Meven Edwin DCunha</span>
+                        </div>
+                    </div>
+                    <div class="table_bottom">
+                        <img src="images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+                    </div>
+                    <br />
+                </div>
+                <div id="contenttext">
+                    <div class="counter">
+                        <form method="POST">
+                            <div class="row">
+                                <textarea id="inputarea" asp-for="text"></textarea>
+                                <span class="alert-danger" asp-validation-for="text"></span>
+                            </div>
+                            <input type="submit" value="Submit" class="subbtn">
+                        </form>
+                    </div>
+                    <br />
+                    <div class="result">
+                        <p style="color:cadetblue"><strong>Count Result:</strong></p>
+                        <div style="width:570px;height:100px;overflow-y:scroll;overflow-x:none;">
+                            <table style="text-align:center">
+                                <thaed>
+                                    <tr id="tablehead">
+                                        <th>
+                                            Word
+                                        </th>
+                                        <th>
+                                            ------
+                                        </th>
+                                        <th>
+                                            Frequency
+                                        </th>
+                                    </tr>
+                                </thaed>
+                                <tbody>
+                                    @foreach (DictionaryEntry item in IndexModel.countresult)
+                                    {
+                                        <tr id="tablerow">
+                                            <td>
+                                                @item.Key
+                                            </td>
+                                            <td>
+                                                ------
+                                            </td>
+                                            <td>
+                                                @item.Value
+                                            </td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                                    </div>
+                                </div>
+                                <div class="footer">
+                                    ©Copyright Wensong Liu<br />
+                                    2019.01.22
+                                </div>
+                        </div>
+</body>
+</html>
