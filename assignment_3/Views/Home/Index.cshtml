@@ -1,0 +1,108 @@
+﻿@page
+@{
+}
+
+@model assignment_3.Models.WordsCounting
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Assignment_3 | INFO 6250</title>
+
+    <!-- import jQuery  -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <!-- import jQuery-UI -->
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+    <!-- css for jQuery-UI -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />   
+</head>
+<body>
+    <div id="page" align="center">
+
+        <div id="header">
+            <div id="companyname" align="left"><font size="6">Counting Words Application</font> <font size="1">Support English, Chinese and Hindi. </font></div>
+            <div align="right" class="links_menu" id="menu">
+                <form method="post">
+                To show corresponding counting results for saved words please click: 
+                    <input type="submit"
+                           name="submitbtn"
+                           value="Chinese" />
+                    <input type="submit"
+                           name="submitbtn"
+                           value="English" />
+                    <input type="submit"
+                           name="submitbtn"
+                           value="Hindi" />
+                </form>
+            </div>
+        </div>
+        <br />
+        <div id="content">
+            <div id="leftpanel">
+                <div class="table_top">
+                    <div align="center"><span class="title_panel">How to use.</span> </div>
+                </div>
+                <div class="table_content">
+                    <div class="table_text">
+                        <span class="news_text">Type words you want to count in the textarea, then you can click "Save" button to save words for future counting, click other 3 count buttons to show corresponding language's counting result for current input.</span><br />
+                        <span class="news_date">IMPORTANT: Numbers are not supported for this application!</span> <br />
+                    </div>
+                </div>
+                <div class="table_bottom">
+                    <img src="images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+                </div>
+                <br />
+                <div class="table_top">
+                    <span class="title_panel">Instructor</span>
+                </div>
+                <div class="table_content">
+                    <div class="table_text">
+                        <span class="news_text">Dino Konstantopoulos</span>
+                        <br />
+                        <span class="news_text">Meven Edwin DCunha</span>
+                    </div>
+                </div>
+                <div class="table_bottom">
+                    <img src="images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+                </div>
+                <br />
+            </div>
+            <div id="contenttext">
+                <div class="counter">
+                    <form method="post">
+                        <div>
+                            <textarea type="text" name="inputtext" id="inputtext" placeholder="Please type in here for counting."></textarea>
+                        </div>
+
+                        <input type="submit"
+                               name="submitbtn"
+                               value="Save" />
+
+                        <input type="submit"
+                               name="submitbtn"
+                               value="Count Chinese Words" />
+                        <input type="submit"
+                               name="submitbtn"
+                               value="Count English Words" />
+                        <input type="submit"
+                               name="submitbtn"
+                               value="Count Hindi Words" />
+                    </form>
+                </div>
+                <br />
+            </div>
+        </div>
+        <div class="footer">
+            ©Copyright Wensong Liu<br />
+            2019.01.27
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,86 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model assignment_3.Models.WordsCounting;
+@using System.Collections;
+@{
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>English</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+</head>
+
+<body>
+    <div id="page" align="center">
+
+        <div id="header">
+            <div id="companyname" align="left"><font size="6">English Words Counting Result</font> </div>
+            <div align="right" class="links_menu" id="menu">
+                This result is for current input.
+            </div>
+        </div>
+
+        <br />
+        <div id="content">
+            <div class="table_top">
+                <span class="title_panel">Result</span>
+            </div>
+            <div class="table_content">
+                <div class="table_text">
+                    <table>
+                        <thead>
+                            <tr id="tablehead">
+                                <th>
+                                    Word
+                                </th>
+                                <th>
+                                    ---
+                                </th>
+                                <th>
+                                    Frequency
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (DictionaryEntry item in Model.CountEn())
+                            {
+                                <tr id="tablerow">
+                                    <td>
+                                        @item.Key
+                                    </td>
+                                    <td>
+                                        ---
+                                    </td>
+                                    <td>
+                                        @item.Value
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="table_bottom">
+                <img src="images/table_bottom.jpg" width="204" height="23" border="0" alt="" />
+            </div>
+            <br />
+        </div>
+        <div class="footer">
+            ©Copyright Wensong Liu<br />
+            2019.01.27
+        </div>
+    </div>
+</body>
+</html>

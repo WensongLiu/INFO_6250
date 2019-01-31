@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{B7698E7E-1A64-4ABB-89D9-FC5FB5799AEC}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Views/Home/allHI.cshtml">
+    <Files>
+      <File FileName="Controllers/HomeController.cs" Line="58" Column="10" />
+      <File FileName="Views/Home/Index.cshtml" Line="86" Column="40" />
+      <File FileName="Views/Home/Saved.cshtml" Line="6" Column="8" />
+      <File FileName="Startup.cs" Line="50" Column="60" />
+      <File FileName="Models/WordsCounting.cs" Line="63" Column="23" />
+      <File FileName="Views/Home/allCN.cshtml" Line="31" Column="46" />
+      <File FileName="Views/Home/CN.cshtml" Line="87" Column="1" />
+      <File FileName="Views/Home/EN.cshtml" Line="87" Column="1" />
+      <File FileName="Views/Home/allEN.cshtml" Line="31" Column="46" />
+      <File FileName="Views/Home/HI.cshtml" Line="87" Column="1" />
+      <File FileName="Views/Home/allHI.cshtml" Line="31" Column="46" />
+      <File FileName="Models/ErrorViewModel.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.assignment__3 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
