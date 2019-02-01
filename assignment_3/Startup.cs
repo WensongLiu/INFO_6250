@@ -42,7 +42,8 @@ namespace assignment_3
             }
 
             app.UseStaticFiles();
-           
+            System.IO.File.Delete("./AllWords.txt");
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(
