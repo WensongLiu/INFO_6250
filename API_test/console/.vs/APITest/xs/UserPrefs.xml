@@ -1,0 +1,16 @@
+﻿<Properties StartupConfiguration="{5C9547FA-7543-4F6A-8D9D-712FA9962FB1}|Default">
+  <MonoDevelop.Ide.ItemProperties.APITest PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="APITest/StudentClient.cs">
+    <Files>
+      <File FileName="APITest/Program.cs" Line="29" Column="39" />
+      <File FileName="APITest/Student.cs" Line="19" Column="29" />
+      <File FileName="APITest/StudentClient.cs" Line="112" Column="80" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

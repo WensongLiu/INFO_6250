@@ -1,0 +1,19 @@
+﻿<Properties StartupConfiguration="{2415D34C-69A8-4D2E-81FC-86EBF8FCBCF4}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebAPI_Lab1/Startup.cs">
+    <Files>
+      <File FileName="WebAPI_Lab1/Startup.cs" Line="35" Column="21" />
+      <File FileName="WebAPI_Lab1/Models/Student.cs" Line="15" Column="32" />
+      <File FileName="WebAPI_Lab1/Models/StudentManager.cs" Line="1" Column="1" />
+      <File FileName="WebAPI_Lab1/Controllers/StudentController.cs" Line="35" Column="30" />
+      <File FileName="WebAPI_Lab1/appsettings.json" Line="1" Column="1" />
+      <File FileName="WebAPI_Lab1/Program.cs" Line="1" Column="1" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.WebAPI__Lab1 PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

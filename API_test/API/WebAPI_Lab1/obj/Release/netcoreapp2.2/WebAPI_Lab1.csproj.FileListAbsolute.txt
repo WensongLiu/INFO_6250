@@ -1,0 +1,14 @@
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\bin\Release\netcoreapp2.2\WebAPI_Lab1.deps.json
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\bin\Release\netcoreapp2.2\WebAPI_Lab1.runtimeconfig.json
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\bin\Release\netcoreapp2.2\WebAPI_Lab1.runtimeconfig.dev.json
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\bin\Release\netcoreapp2.2\WebAPI_Lab1.dll
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\bin\Release\netcoreapp2.2\WebAPI_Lab1.pdb
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.csproj.CoreCompileInputs.cache
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.RazorAssemblyInfo.cache
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.RazorAssemblyInfo.cs
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.AssemblyInfoInputs.cache
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.AssemblyInfo.cs
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.RazorTargetAssemblyInfo.cache
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.dll
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.pdb
+C:\Users\Cyrus\Documents\Visual Studio 2017\Projects\WebAPI_Lab1\WebAPI_Lab1\obj\Release\netcoreapp2.2\WebAPI_Lab1.csprojAssemblyReference.cache
