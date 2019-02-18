@@ -46,7 +46,7 @@ namespace Sneakerx_api.Models
                 string connString = "SERVER=localhost" + ";" +
                                     "DATABASE=HW_5;" +
                                     "UID=root;" +
-                                    "PASSWORD=712918Lwslbs;";
+                                    "PASSWORD=xxxxxxxx;";
                 connection = new MySqlConnection(connString);
                 connection.Open();
             }
