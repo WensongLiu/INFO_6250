@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{97BA0A23-F108-4A97-90CD-4BFF506B0F89}|Default">
+  <MonoDevelop.Ide.ItemProperties.Sneakerx__api FirstBuild="True" PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../Sneakerx_mvc/Models/ServerClient.cs">
+    <Files>
+      <File FileName="Controllers/ServerController.cs" Line="18" Column="18" />
+      <File FileName="../Sneakerx_mvc/Controllers/ClientController.cs" Line="53" Column="10" />
+      <File FileName="../Sneakerx_mvc/Startup.cs" Line="48" Column="50" />
+      <File FileName="../Sneakerx_mvc/Views/Shared/_Layout.cshtml" Line="25" Column="1" />
+      <File FileName="../Sneakerx_mvc/Views/Client/RegisterPage.cshtml" Line="26" Column="74" />
+      <File FileName="../Sneakerx_mvc/Views/Client/LoginPage.cshtml" Line="24" Column="75" />
+      <File FileName="../Sneakerx_mvc/Views/Client/Homepage.cshtml" Line="19" Column="34" />
+      <File FileName="../Sneakerx_mvc/Views/Client/WrongPwd.cshtml" Line="21" Column="12" />
+      <File FileName="../Sneakerx_mvc/Views/Client/AccountExists.cshtml" Line="26" Column="8" />
+      <File FileName="../Sneakerx_mvc/Views/Client/RegisterSuccessfully.cshtml" Line="21" Column="1" />
+      <File FileName="../Sneakerx_mvc/Models/User.cs" Line="34" Column="10" />
+      <File FileName="../Sneakerx_mvc/Models/ServerClient.cs" Line="61" Column="26" />
+      <File FileName="../Sneakerx_mvc/Models/RegisterInfo.cs" Line="32" Column="10" />
+      <File FileName="../Sneakerx_mvc/Models/LoginInfo.cs" Line="21" Column="6" />
+      <File FileName="Startup.cs" Line="38" Column="10" />
+      <File FileName="Program.cs" Line="1" Column="1" />
+      <File FileName="Models/User.cs" Line="39" Column="6" />
+      <File FileName="Models/UserManager.cs" Line="155" Column="6" />
+      <File FileName="Models/Item.cs" Line="33" Column="6" />
+      <File FileName="Models/ItemManager.cs" Line="14" Column="17" />
+      <File FileName="Models/LoginInfo.cs" Line="21" Column="6" />
+      <File FileName="Models/RegisterInfo.cs" Line="33" Column="6" />
+      <File FileName="Models/DatabaseConnection.cs" Line="26" Column="21" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

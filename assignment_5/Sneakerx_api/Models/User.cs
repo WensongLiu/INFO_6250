@@ -12,7 +12,7 @@ namespace Sneakerx_api.Models
     {
         public String userName { get; set; }
         public String emailAddress { get; set; }
-        public String password { get; set; }
+        public String pwd { get; set; }
         public int userID { get; set; }
         public Double balance { get; set; }
         public String shippingAddress { get; set; }
@@ -20,11 +20,11 @@ namespace Sneakerx_api.Models
         public String zipCode { get; set; }
         public String country { get; set; }
 
-        public User(String userName, String emailAddress, String password, int userID, Double balance, String shippingAddress, String phoneNo, String zipCode, String country)
+        public User(String userName, String emailAddress, String pwd, int userID, Double balance, String shippingAddress, String phoneNo, String zipCode, String country)
         {
             this.userName = userName;
             this.emailAddress = emailAddress;
-            this.password = password;
+            this.pwd = pwd;
             this.userID = userID;
             this.balance = balance;
             this.shippingAddress = shippingAddress;

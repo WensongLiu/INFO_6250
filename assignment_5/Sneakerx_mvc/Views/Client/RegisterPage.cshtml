@@ -1,0 +1,39 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model Sneakerx_mvc.Models.ServerClient;
+@{
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Login</title>
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+</head>
+
+<body>
+    Hi, you should register here first!
+
+    <form method="post" asp-action="RegisterAsync" asp-controller="Client">
+        <input type="text" name="userName" placeholder="User Name" /><br>
+        <input type="text" name="emailAddress" placeholder="Email Address" /><br>
+        <input type="password" name="pwd" placeholder="Password" /><br>
+        <input type="text" name="balance" placeholder="Balance" /><br>
+        <input type="text" name="shippingAddress" placeholder="Shipping Address" /><br>
+        <input type="text" name="phoneNo" placeholder="Phone Number" /><br>
+        <input type="text" name="zipCode" placeholder="Zip Code" /><br>
+        <input type="text" name="country" placeholder="Country" /><br>
+        <input type="submit" name="registerBtn" value="Register" /><br>
+    </form>
+
+</body>
+</html>

@@ -14,4 +14,7 @@
   <ItemGroup>
     <Folder Include="Models\" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Remove="Models\Item.json" />
+  </ItemGroup>
 </Project>
