@@ -49,14 +49,14 @@ namespace Sneakerx_api.Models
                         });
                     }
                 }
-                dbCon.Close();
+                //dbCon.Close();
             }
 
             //****************************************  Try 2  *****************************************************
             //string connString = "SERVER=localhost" + ";" +
             //                    "DATABASE=HW_5;" +
             //                    "UID=root;" +
-            //                    "PASSWORD=xxxxxxxxxxxx;";
+            //                    "PASSWORD=712918Lwslbs;";
 
             //MySqlConnection cnMySQL = new MySqlConnection(connString);
 
@@ -139,7 +139,7 @@ namespace Sneakerx_api.Models
                 string connString = "SERVER=localhost" + ";" +
                                     "DATABASE=HW_5;" +
                                     "UID=root;" +
-                                    "PASSWORD=xxxxxxxxx;";
+                                    "PASSWORD=712918Lwslbs;";
 
                 MySqlConnection cnMySQL = new MySqlConnection(connString);
                 cnMySQL.Open();
@@ -157,7 +157,7 @@ namespace Sneakerx_api.Models
                 cmdMySQL.Parameters.Add("@zipCode", MySqlDbType.VarChar).Value = zipCode;
                 cmdMySQL.Parameters.Add("@country", MySqlDbType.VarChar).Value = country;
                 cmdMySQL.ExecuteNonQuery();
-                cnMySQL.Close();
+                //cnMySQL.Close();
                 //}
 
                 //return _users.Where(o => o.emailAddress.Equals(user.emailAddress)).ToList()[0];
@@ -184,6 +184,41 @@ namespace Sneakerx_api.Models
             //    cmd.ExecuteNonQuery();
             //    dbCon.Close();
             //}
+        }
+
+        public Double GetBalance(int userID)
+        {
+            return _users.Where(o => o.userID == userID).ToList()[0].balance;
+        }
+
+        public void UmUpdate()
+        {
+            _users = new List<User>();
+            var dbCon = DatabaseConnection.Instance();
+            dbCon.DatabaseName = "HW_5";
+            if (dbCon.IsConnect())
+            {
+                string query = "SELECT * FROM users";
+                var cmd = new MySqlCommand(query, dbCon.Connection);
+                using (var reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        _users.Add(new User()
+                        {
+                            userName = reader["userName"].ToString(),
+                            emailAddress = reader["emailAddress"].ToString(),
+                            pwd = reader["pwd"].ToString(),
+                            userID = Convert.ToInt32(reader["userID"]),
+                            balance = Convert.ToDouble(reader["balance"]),
+                            shippingAddress = reader["shippingAddress"].ToString(),
+                            phoneNo = reader["phoneNo"].ToString(),
+                            zipCode = reader["zipCode"].ToString(),
+                            country = reader["country"].ToString()
+                        });
+                    }
+                }
+            }
         }
     }
 }

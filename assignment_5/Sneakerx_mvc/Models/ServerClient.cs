@@ -97,5 +97,83 @@ namespace Sneakerx_mvc.Models
                 //return response.StatusCode;
             }
         }
+
+        public async Task<List<Item>> GetItemsAsync()
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "GetItem");
+            using (client)
+            {
+                HttpResponseMessage response;
+                response = await client.GetAsync(client.BaseAddress);
+
+                //var result = response.Content.ReadAsAsync<IEnumerable<Student>>().Result; 
+                //if (response.IsSuccessStatusCode)
+                //{
+                var avail = await response.Content.ReadAsStringAsync()
+                    .ContinueWith<List<Item>>(postTask =>
+                    {
+                        return JsonConvert.DeserializeObject<List<Item>>(postTask.Result);
+                    });
+                return avail;
+                //}
+                //else
+                //{
+                //    return null;
+                //}
+            }
+        }
+
+        public async Task<List<CartInfo>> GetMyCartAsync(int userID)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "GetCartAsync");
+            using (client)
+            {
+                HttpResponseMessage response;
+                var output = JsonConvert.SerializeObject(userID);
+                HttpContent contentPost = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+                response = await client.PostAsync(client.BaseAddress, contentPost);
+
+                var avail = await response.Content.ReadAsStringAsync()
+                    .ContinueWith<List<CartInfo>>(postTask =>
+                    {
+                        return JsonConvert.DeserializeObject<List<CartInfo>>(postTask.Result);
+                    });
+                return avail;
+            }
+        }
+
+        public async Task AddToItemAsync(CartInfo cartInfo)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "PostAddToCart");
+            using (client)
+            {
+                HttpResponseMessage response;
+                var output = JsonConvert.SerializeObject(cartInfo);
+                HttpContent contentPost = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+                response = await client.PostAsync(client.BaseAddress, contentPost);
+            }
+        }
+
+        public async Task<Double> CheckOutAsync(int userID)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "CheckOutAsync");
+            using (client)
+            {
+                HttpResponseMessage response;
+                var output = JsonConvert.SerializeObject(userID);
+                HttpContent contentPost = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+                response = await client.PostAsync(client.BaseAddress, contentPost);
+                var avail = await response.Content.ReadAsStringAsync()
+                    .ContinueWith<Double>(postTask =>
+                    {
+                        return JsonConvert.DeserializeObject<Double>(postTask.Result);
+                    });
+                return avail;
+            }
+        }
     }
 }

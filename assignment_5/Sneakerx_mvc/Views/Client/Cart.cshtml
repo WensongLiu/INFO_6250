@@ -1,0 +1,82 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@model List<CartInfo>;
+@{
+}
+
+
+<p>Here is your cart!</p>
+<br />
+<br />
+<table>
+    <thead>
+        <tr id="tablehead" style="text-align:center">
+            <th>
+                Item ID
+            </th>
+            <th>
+                Item Name
+            </th>
+            <th>
+                Item Size
+            </th>
+            <th>
+                Item Amount
+            </th>
+            <th>
+                Price
+            </th>
+            <th>
+                Item Picture
+            </th>
+            <th>
+                Remove one from this kind of shoes.
+            </th>
+        </tr>
+    </thead>
+    <tbody style="text-align:center">
+        @foreach (CartInfo cartInfo in Model)
+        {
+            <form asp-controller="Client" asp-action="AddToCartAsync" method="post">
+                <tr id="tablerow">
+                    <td>
+                        <input type="text" name="itemID" value=@cartInfo.itemID readonly="readonly" />
+                    </td>
+                    <td>
+                        <input type="text" name="itemName" value="@cartInfo.itemName" readonly="readonly" />
+                    </td>
+                    <td>
+                        <input type="text" name="itemSize" value=@cartInfo.itemSize readonly="readonly" />
+                    </td>
+                    <td>
+                        <input type="text" name="itemAmount" value=@cartInfo.itemInCartAmount readonly="readonly" />
+                    </td>
+                    <td>
+                        <input type="text" name="price" value=@cartInfo.price readonly="readonly" />
+                    </td>
+                    <td>
+                        <input type="text" name="picLink" value=@cartInfo.picLink readonly="readonly" />
+                    </td>
+                    <td>
+                        <input type="hidden" name="userID" value=@ViewBag.LinkableId>
+                        <input type="submit" name="addItemToCart" value="Remove" />
+                    </td>
+                </tr>
+            </form>
+        }
+    </tbody>
+</table>
+<br />
+<br />
+@* View Cart Button *@
+<form method="post" asp-action="CheckOutAsync" asp-controller="Client">
+    <input type="hidden" name="userID" value=@ViewBag.LinkableId>
+    <input type="hidden" name="userName" value=@ViewBag.Message>
+    <input type="submit" name="CheckOut" value="Check Out" />
+</form>
+<br />
+<br />
+<form asp-controller="Client" asp-action="Crash" method="get">
+    <input type="submit" name="CrashBtn" value="Crash" />
+</form>

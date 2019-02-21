@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Http;
 
 namespace Sneakerx_mvc.Models
 {
-    // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
+    // This class is used for registeration.
     public class RegisterInfo
     {
         public string userName { set; get; }

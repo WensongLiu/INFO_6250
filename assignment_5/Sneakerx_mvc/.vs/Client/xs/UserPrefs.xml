@@ -1,29 +1,7 @@
 ﻿<Properties StartupConfiguration="{2E98E4E3-5BE3-47EF-B8B1-44ABB4B87936}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/ServerClient.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/ClientController.cs">
     <Files>
-      <File FileName="../Sneakerx_api/Controllers/ServerController.cs" Line="18" Column="18" />
-      <File FileName="Controllers/ClientController.cs" Line="53" Column="10" />
-      <File FileName="Startup.cs" Line="48" Column="50" />
-      <File FileName="Views/Shared/_Layout.cshtml" Line="25" Column="1" />
-      <File FileName="Views/Client/RegisterPage.cshtml" Line="26" Column="74" />
-      <File FileName="Views/Client/LoginPage.cshtml" Line="24" Column="75" />
-      <File FileName="Views/Client/Homepage.cshtml" Line="19" Column="34" />
-      <File FileName="Views/Client/WrongPwd.cshtml" Line="21" Column="12" />
-      <File FileName="Views/Client/AccountExists.cshtml" Line="26" Column="8" />
-      <File FileName="Views/Client/RegisterSuccessfully.cshtml" Line="21" Column="1" />
-      <File FileName="Models/User.cs" Line="34" Column="10" />
-      <File FileName="Models/ServerClient.cs" Line="57" Column="46" />
-      <File FileName="Models/RegisterInfo.cs" Line="32" Column="10" />
-      <File FileName="Models/LoginInfo.cs" Line="21" Column="6" />
-      <File FileName="../Sneakerx_api/Startup.cs" Line="38" Column="10" />
-      <File FileName="../Sneakerx_api/Program.cs" Line="1" Column="1" />
-      <File FileName="../Sneakerx_api/Models/User.cs" Line="39" Column="6" />
-      <File FileName="../Sneakerx_api/Models/UserManager.cs" Line="155" Column="6" />
-      <File FileName="../Sneakerx_api/Models/Item.cs" Line="33" Column="6" />
-      <File FileName="../Sneakerx_api/Models/ItemManager.cs" Line="14" Column="17" />
-      <File FileName="../Sneakerx_api/Models/LoginInfo.cs" Line="21" Column="6" />
-      <File FileName="../Sneakerx_api/Models/RegisterInfo.cs" Line="33" Column="6" />
-      <File FileName="../Sneakerx_api/Models/DatabaseConnection.cs" Line="26" Column="21" />
+      <File FileName="Controllers/ClientController.cs" Line="76" Column="131" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Sneakerx__mvc PreferredExecutionTarget="MonoDevelop.Default" />

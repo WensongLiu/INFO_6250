@@ -30,3 +30,7 @@ insert into users(userName, emailAddress, pwd, userID, balance, shippingAddress,
 values("Meven Edwin DCunha", "dcunha.m@husky.neu.edu", "Meven6250TA", 000008, 5000.00, "Don Bosco Institute of Technology, Electronics and Communications Engineering, Mumbai", "62506250", "400070", "India");
 
 select * from users;
+
+delete FROM users WHERE userID = 9;
+
+SET SQL_SAFE_UPDATES = 0;

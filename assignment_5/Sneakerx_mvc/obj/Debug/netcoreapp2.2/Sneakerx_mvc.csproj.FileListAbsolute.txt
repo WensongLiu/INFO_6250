@@ -27,8 +27,8 @@
 /Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/bin/Debug/netcoreapp2.2/Sneakerx_mvc.Views.dll
 /Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/bin/Debug/netcoreapp2.2/Sneakerx_mvc.Views.pdb
 /Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/obj/Debug/netcoreapp2.2/Razor/Views/Client/AccountExists.g.cshtml.cs
-/Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/obj/Debug/netcoreapp2.2/Razor/Views/Client/Homepage.g.cshtml.cs
 /Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/obj/Debug/netcoreapp2.2/Razor/Views/Client/RegisterSuccessfully.g.cshtml.cs
 /Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/obj/Debug/netcoreapp2.2/Razor/Views/Client/WrongPwd.g.cshtml.cs
 /Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/obj/Debug/netcoreapp2.2/Sneakerx_mvc.Views.pdb
 /Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/obj/Debug/netcoreapp2.2/Sneakerx_mvc.csproj.CopyComplete
+/Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_mvc/obj/Debug/netcoreapp2.2/Razor/Views/Client/Cart.g.cshtml.cs

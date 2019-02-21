@@ -8,7 +8,7 @@ using MySql.Data.MySqlClient;
 
 namespace Sneakerx_api.Models
 {
-    // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
+    // This class is used to connect to MySQL
     public class DatabaseConnection
     {
         private DatabaseConnection()
@@ -46,7 +46,7 @@ namespace Sneakerx_api.Models
                 string connString = "SERVER=localhost" + ";" +
                                     "DATABASE=HW_5;" +
                                     "UID=root;" +
-                                    "PASSWORD=xxxxxxxx;";
+                                    "PASSWORD=712918Lwslbs;";
                 connection = new MySqlConnection(connString);
                 connection.Open();
             }

@@ -37,6 +37,7 @@ namespace Sneakerx_api.Models
                             //this.picLink = picLink;
                             itemID = Convert.ToInt32(reader["itemID"]),
                             itemName = reader["itemName"].ToString(),
+                            itemSize = reader["itemSize"].ToString(),
                             itemAmount = Convert.ToInt32(reader["itemAmount"]),
                             price = Convert.ToDouble(reader["price"]),
                             description = reader["description"].ToString(),
@@ -44,7 +45,7 @@ namespace Sneakerx_api.Models
                         });
                     }
                 }
-                dbCon.Close();
+                //dbCon.Close();
             }
         }
 

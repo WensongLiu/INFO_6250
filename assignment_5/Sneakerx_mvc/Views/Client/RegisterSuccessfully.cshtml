@@ -21,10 +21,15 @@
 
     <body>
         Register successfully, you can login now!
+        <br/>
+        <br/>
         <form asp-controller="Client" asp-action="LoginPage" method="post">
             <input type="submit" name="backLoginBtn" value="Go Login" />
         </form>
-
-
+        <br/>
+        <br/>
+        <form asp-controller="Client" asp-action="Crash" method="get">
+            <input type="submit" name="CrashBtn" value="Crash" />
+        </form>
     </body>
 </html>

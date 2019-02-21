@@ -1,26 +1,160 @@
 ﻿@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
-@model Sneakerx_mvc.Models.ServerClient;
+@model List<Item> ;
 @{
 }
 
-<!DOCTYPE html>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <title> Sneaker X </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title>Login</title>
         <script src="http://code.jquery.com/jquery-3.3.1.min.js"
                 crossorigin="anonymous"></script>
         <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
                 crossorigin="anonymous"></script>
         <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+        <meta name="description" content="Shopping Website" />
+        <meta name="keywords" content="Sneaker & Shopping & MVC & API & MySQL & .NET & Azure" />
+        <meta name="author" content="Wensong Liu" />
+        <link href="stylesheet.css" rel="stylesheet" type="text/css" />
     </head>
 
     <body>
-        Hi, you have log in successfully!
-
+        Hi, @ViewBag.Message, you have logged in successfully!
+        <br />
+        Your balance is @ViewBag.Double!
+        <br />
+        <br />
+        <br />
+        <table>
+            <thead>
+                <tr id="tablehead" style="text-align:center">
+                    <th>
+                        Item ID
+                    </th>
+                    <th>
+                        Item Name
+                    </th>
+                    <th>
+                        Item Size
+                    </th>
+                    <th>
+                        Item Amount
+                    </th>
+                    <th>
+                        Price
+                    </th>
+                    <th>
+                        Item Description
+                    </th>
+                    <th>
+                        Item Picture
+                    </th>
+                    <th>
+                        Add
+                    </th>
+                </tr>
+            </thead>
+            <tbody style="text-align:center">
+                @foreach (Item item in Model)
+                {
+                    <form asp-controller="Client" asp-action="AddToCartAsync" method="post">
+                        <tr id="tablerow">
+                            <td>
+                                <input type="text" name="itemID" value=@item.itemID readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" name="itemName" value="@item.itemName" readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" name="itemSize" value=@item.itemSize readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" name="itemAmount" value=@item.itemAmount readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" name="price" value=@item.price readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" name="description" value=@item.description readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="text" name="picLink" value=@item.picLink readonly="readonly" />
+                            </td>
+                            <td>
+                                <input type="hidden" name="balance" value=@ViewBag.Double>
+                                <input type="hidden" name="userName" value=@ViewBag.Message>
+                                <input type="hidden" name="userID" value=@ViewBag.LinkableId>
+                                <input type="submit" name="addItemToCart" value="Add To Cart" />
+                            </td>
+                        </tr>
+                    </form>
+                }
+            </tbody>
+        </table>
+        <br />
+        <br />
+        @* View Cart Button *@
+        <form method="post" asp-action="GetMyCartAsync" asp-controller="Client">
+            <input type="hidden" name="userID" value=@ViewBag.LinkableId>
+            <input type="hidden" name="userName" value=@ViewBag.Message>
+            <input type="submit" name="ViewCart" value="View My Cart" />
+        </form>
+        <br />
+        <br />
+        <form asp-controller="Client" asp-action="Crash" method="get">
+            <input type="submit" name="CrashBtn" value="Crash" />
+        </form>
     </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
