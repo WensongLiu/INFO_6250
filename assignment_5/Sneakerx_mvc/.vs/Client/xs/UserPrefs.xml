@@ -1,7 +1,28 @@
 ﻿<Properties StartupConfiguration="{2E98E4E3-5BE3-47EF-B8B1-44ABB4B87936}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/ClientController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Log.cs">
     <Files>
-      <File FileName="Controllers/ClientController.cs" Line="76" Column="131" />
+      <File FileName="Controllers/ClientController.cs" Line="44" Column="24" />
+      <File FileName="Models/ServerClient.cs" Line="101" Column="52" />
+      <File FileName="Views/Client/Cart.cshtml" Line="111" Column="13" />
+      <File FileName="Views/Client/AccountExists.cshtml" Line="26" Column="25" />
+      <File FileName="Views/Client/LoginPage.cshtml" Line="31" Column="24" />
+      <File FileName="Startup.cs" Line="22" Column="1" />
+      <File FileName="Program.cs" Line="17" Column="32" />
+      <File FileName="Views/Client/WrongPwd.cshtml" Line="28" Column="16" />
+      <File FileName="Models/User.cs" Line="21" Column="44" />
+      <File FileName="Models/LoginInfo.cs" Line="20" Column="1" />
+      <File FileName="Views/Client/Homepage.cshtml" Line="597" Column="68" />
+      <File FileName="Models/RegisterInfo.cs" Line="14" Column="28" />
+      <File FileName="Views/Client/UpdateUserInfo.cshtml" Line="356" Column="34" />
+      <File FileName="Views/Client/RegisterPage.cshtml" Line="504" Column="31" />
+      <File FileName="Views/Shared/_Layout.cshtml" Line="22" Column="46" />
+      <File FileName="Views/Client/RegisterSuccessfully.cshtml" Line="1" Column="1" />
+      <File FileName="Models/CardInfo.cs" Line="31" Column="6" />
+      <File FileName="Models/CartInfo.cs" Line="30" Column="10" />
+      <File FileName="Models/OrderInfo.cs" Line="28" Column="34" />
+      <File FileName="Views/Client/OrderHistory.cshtml" Line="495" Column="22" />
+      <File FileName="Views/Client/ThisOrder.cshtml" Line="94" Column="1" />
+      <File FileName="Models/Log.cs" Line="13" Column="9" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Sneakerx__mvc PreferredExecutionTarget="MonoDevelop.Default" />

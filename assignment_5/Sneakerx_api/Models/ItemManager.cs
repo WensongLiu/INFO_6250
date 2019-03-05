@@ -51,5 +51,14 @@ namespace Sneakerx_api.Models
 
         //to see whether DB works
         public IEnumerable<Item> GetAll { get { return _items; } }
+
+        public int GetItemAmount(int itemID)
+        {
+            foreach (Item item in _items)
+            {
+                if (item.itemID == itemID) return item.itemAmount;
+            }
+            return -1;
+        }
     }
 }

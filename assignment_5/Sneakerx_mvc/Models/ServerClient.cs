@@ -175,5 +175,68 @@ namespace Sneakerx_mvc.Models
                 return avail;
             }
         }
+
+        public async Task<System.Net.HttpStatusCode> UpdatePWDAsync(User user)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "PasswordResetting");
+            using (client)
+            {
+                HttpResponseMessage response;
+                var output = JsonConvert.SerializeObject(user);
+                HttpContent contentPost = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+                response = await client.PostAsync(client.BaseAddress, contentPost);
+                return response.StatusCode;
+            }
+        }
+
+        public async Task<System.Net.HttpStatusCode> ChargeAsync(CardInfo cardInfo)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "Charge");
+            using (client)
+            {
+                HttpResponseMessage response;
+                var output = JsonConvert.SerializeObject(cardInfo);
+                HttpContent contentPost = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+                response = await client.PostAsync(client.BaseAddress, contentPost);
+                return response.StatusCode;
+            }
+        }
+
+        public async Task UpdateBalance(User user)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "BalanceUpdate");
+            using (client)
+            {
+                HttpResponseMessage response;
+                var output = JsonConvert.SerializeObject(user);
+                HttpContent contentPost = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+                response = await client.PostAsync(client.BaseAddress, contentPost);
+            }
+        }
+
+        public async Task<List<OrderInfo>> GetMyOrderAsync(int userID)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "MyOrder");
+            using (client)
+            {
+                HttpResponseMessage response;
+                var output = JsonConvert.SerializeObject(userID);
+                HttpContent contentPost = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+                response = await client.PostAsync(client.BaseAddress, contentPost);
+
+                var avail = await response.Content.ReadAsStringAsync()
+                    .ContinueWith<List<OrderInfo>>(postTask =>
+                    {
+                        return JsonConvert.DeserializeObject<List<OrderInfo>>(postTask.Result);
+                    });
+                return avail;
+            }
+        }
+
+
     }
 }

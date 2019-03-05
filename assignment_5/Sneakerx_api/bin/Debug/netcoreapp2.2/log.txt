@@ -1,0 +1,4 @@
+2019-03-02 12:49:52.3385   LEVEL=INFO: Sample informational message
+2019-03-02 12:49:52.4429   LEVEL=WARN: Sample warning message
+2019-03-02 12:49:52.4429   LEVEL=ERROR: Sample error message
+2019-03-02 12:49:52.4431   LEVEL=FATAL: Sample fatal message

@@ -10,8 +10,15 @@ namespace Sneakerx_mvc.Controllers
 {
     public class ClientController : Controller
     {
+        static User login_user = null;
+        static List<OrderInfo> orderlist;
+        static List<CartInfo> cartlist;
+
         public IActionResult LoginPage()
         {
+            login_user = null;
+            orderlist = null;
+            cartlist = null;
             return View("LoginPage");
         }
 
@@ -23,22 +30,35 @@ namespace Sneakerx_mvc.Controllers
         }
 
         //MySQL's localhost address
+        //local api for test
         String urlString = "https://localhost:6001/";
+        //azure api's url
+        //String urlString = "https://xxxxxxxxxx.azurewebsites.net";
 
         //-----------------------------------------------------------------------Login-------------------------------------------------------------------
         [HttpPost]
         public async Task<IActionResult> LoginAsync(String emailAddress, String password)
         {
-            var baseUri = new Uri(urlString);
-            var serverClient = new ServerClient(urlString);
-            LoginInfo loginInfo = new LoginInfo(emailAddress, password);
-            User user = await serverClient.LoginAsync(loginInfo);
-            String pwd = user.pwd;
-            String userName = (await serverClient.LoginAsync(loginInfo)).userName;
+            if(emailAddress == null || password == null)
+            {
+                ViewBag.Message = "All fields are required, please try again!";
+                return View("LoginPage");
+            }
+            else 
+            {
+                var baseUri = new Uri(urlString);
+                var serverClient = new ServerClient(urlString);
+                LoginInfo loginInfo = new LoginInfo(emailAddress, password);
+                login_user = await serverClient.LoginAsync(loginInfo);
+                String pwd = login_user.pwd;
+                String userName = login_user.userName;
+                int userID = login_user.userID;
+                double balance = login_user.balance;
 
-            if (pwd.Equals("noExist")) return RegisterPage();
-            else if (pwd.Equals("wrong")) return WrongPwd();
-            else return await AfterLoginAsync(user);
+                if (pwd.Equals("noExist")) return RegisterPage();
+                else if (pwd.Equals("wrong")) return WrongPwd();
+                else return await AfterLoginAsync();
+            }
         }
 
         [Route("Client/LoginAsync/RegisterPage/")]
@@ -60,43 +80,52 @@ namespace Sneakerx_mvc.Controllers
         [Route("Client/RegisterAsync/")]
         public async Task<IActionResult> RegisterAsync(String userName, String emailAddress, String pwd, String balance, String shippingAddress, String phoneNo, String zipCode, String country)
         {
-            var baseUri = new Uri(urlString);
-            var serverClient = new ServerClient(urlString);
-            Double bal = Convert.ToDouble(balance);
-            RegisterInfo registerInfo = new RegisterInfo(userName, emailAddress, pwd, bal, shippingAddress, phoneNo, zipCode, country);
-            //User user = ;
-            String emailStatus = (await serverClient.RegisterAsync(registerInfo)).emailAddress;
-            //User user = new User(registerInfo.userName, registerInfo.emailAddress, registerInfo.pwd, 8, registerInfo.balance, registerInfo.shippingAddress, registerInfo.phoneNo, registerInfo.zipCode, registerInfo.country);
-            //String test = user.emailAddress;
+            if(userName == null || emailAddress == null || pwd == null || balance == null || shippingAddress == null || phoneNo == null || zipCode == null || country == null) 
+            {
+                ViewBag.Message = "All fields are required, please try again!";
+                return View("RegisterPage");
+            }
+            else 
+            {
+                var baseUri = new Uri(urlString);
+                var serverClient = new ServerClient(urlString);
+                Double bal = Convert.ToDouble(balance);
+                RegisterInfo registerInfo = new RegisterInfo(userName, emailAddress, pwd, bal, shippingAddress, phoneNo, zipCode, country);
+                //User user = ;
+                String emailStatus = (await serverClient.RegisterAsync(registerInfo)).emailAddress;
+                //User user = new User(registerInfo.userName, registerInfo.emailAddress, registerInfo.pwd, 8, registerInfo.balance, registerInfo.shippingAddress, registerInfo.phoneNo, registerInfo.zipCode, registerInfo.country);
+                //String test = user.emailAddress;
 
-            if (emailStatus.Equals("exist")) return View("AccountExists");
-            else return View("RegisterSuccessfully");
+                if (emailStatus.Equals("exist")) return View("AccountExists");
+                else return View("RegisterSuccessfully");
+            }
         }
 
         //------------------------------------------------- After login website displays all items automatically -----------------------------------------------
         [Route("Client/LoginAsync/Homepage/")]
         //[ActionName("AfterLogin")]
-        public async Task<IActionResult> AfterLoginAsync(User user)
+        public async Task<IActionResult> AfterLoginAsync()
         {
-            return await getAllItems(user);
+            return await getAllItems();
         }
 
 
         [HttpPost]
         [Route("Client/getAllItems/")]
-        public async Task<IActionResult> getAllItems(User user)
+        public async Task<IActionResult> getAllItems()
         {
             var baseUri = new Uri(urlString);
-            var serverClient = new ServerClient(urlString);
-            List<Item>list = await serverClient.GetItemsAsync();
+            var serverClient = new ServerClient(urlString);//
+            List<Item> list = await serverClient.GetItemsAsync();
             //User user = new User(registerInfo.userName, registerInfo.emailAddress, registerInfo.pwd, 8, registerInfo.balance, registerInfo.shippingAddress, registerInfo.phoneNo, registerInfo.zipCode, registerInfo.country);
             //String test = user.emailAddress;
-            String userName = user.userName;
-            int userID = user.userID;
-            Double balance = user.balance;
-            ViewBag.LinkableId = userID;
-            ViewBag.Message = userName;
-            ViewBag.Double = balance;
+            //String name = userName;
+            //int ID = userID;
+            //Double bal = balance;
+            ViewBag.User = login_user;
+            //ViewBag.LinkableId = userID;
+            //ViewBag.Message = userName;
+            //ViewBag.Double = balance;
             //ViewBag.
             return View("Homepage", list);
         }
@@ -104,20 +133,28 @@ namespace Sneakerx_mvc.Controllers
         //----------------------------------------------------------------- Add item to cart one by one ----------------------------------------------------------
         [HttpPost]
         [Route("Client/AddToCart/")]
-        public async Task<IActionResult> AddToCartAsync(double balance, string userName,int userID, int itemID, string itemName, string itemSize, double price, string picLink, string addItemToCart)
+        public async Task<IActionResult> AddToCartAsync(int userID, int itemID, string itemName, string itemSize, double price, string picLink, string addItemToCart)
         {
             int add;
-            if (addItemToCart.Equals("Add To Cart")) add = 1;
-            else add = -1;
+            if (addItemToCart.Equals("Add To Cart"))
+            {
+                add = 1;
+                ViewBag.successMessage = "Add To Cart Successfully!";
+            }
+            else {
+                add = -1;
+                ViewBag.successMessage = "Remove From Cart Successfully!";
+            }
+
             CartInfo ci = new CartInfo(userID, itemID, itemName, itemSize, add, price, picLink);
             var baseUri = new Uri(urlString);
             var serverClient = new ServerClient(urlString);
-            serverClient.AddToItemAsync(ci);
-            ViewBag.Message = userName;
-            ViewBag.LinkableId = userID;
-            ViewBag.Double = balance;
+            await serverClient.AddToItemAsync(ci);
             List<CartInfo> cartlist = await serverClient.GetMyCartAsync(userID);
             List<Item> list = await serverClient.GetItemsAsync();
+            ViewBag.User = login_user;
+            //ViewBag.LinkableId = userID;
+            //ViewBag.Double = balance;
             if (addItemToCart.Equals("Remove")) return View("Cart", cartlist);
             else return View("Homepage", list);
             //ViewData["Integer"] = userID;
@@ -127,29 +164,157 @@ namespace Sneakerx_mvc.Controllers
         //----------------------------------------------------------------- Show user's current cart ----------------------------------------------------------
         [HttpPost]
         [Route("Client/GetMyCartAsync/")]
-        public async Task<IActionResult> GetMyCartAsync(int userID, string userName)
+        public async Task<IActionResult> GetMyCartAsync(int userID)
         {
             var baseUri = new Uri(urlString);
             var serverClient = new ServerClient(urlString);
-            List<CartInfo> cartlist = await serverClient.GetMyCartAsync(userID);
-            ViewBag.LinkableId = userID;
-            ViewBag.Message = userName;
-            return  View("Cart", cartlist);
+            cartlist = await serverClient.GetMyCartAsync(userID);
+            ViewBag.User = login_user;
+            return View("Cart", cartlist);
         }
 
         //----------------------------------------------------------- Check out then go back to homepage ---------------------------------------------------
         [HttpPost]
         [Route("Client/CheckOutAsync/")]
-        public async Task<IActionResult> CheckOutAsync(int userID, string userName)
+        public async Task<IActionResult> CheckOutAsync(int userID)
+        {
+            double totalCost = 0.0;
+            //To check balance
+            foreach (CartInfo ci in cartlist)
+            {
+                totalCost += ci.price * ci.itemInCartAmount;
+            }
+            if(totalCost > login_user.balance)
+            {
+                ViewBag.User = login_user;
+                ViewBag.Message = "Sorry, please add some balance first!";
+                return View("Cart", cartlist);
+            }
+            else
+            {
+                var baseUri = new Uri(urlString);
+                var serverClient = new ServerClient(urlString);
+                double balance = await serverClient.CheckOutAsync(userID);
+                List<Item> list = await serverClient.GetItemsAsync();
+                login_user.balance = balance;
+                ViewBag.User = login_user;
+                return View("Homepage", list);
+            }
+        }
+
+        //----------------------------------------------------------- To update user's info ---------------------------------------------------
+        [HttpPost]
+        [Route("Client/UserInfo/")]
+        public IActionResult ViewUserInfoAsync()
+        {
+            ViewBag.User = login_user;
+            return View("UpdateUserInfo");
+        }
+
+        //----------------------------------------------------------- Password reset ---------------------------------------------------
+        [HttpPost]
+        [Route("Client/PasswordResetting/")]
+        public async Task<IActionResult> UpdatePWDAsync(string pwd_1, string pwd_2)
+        {
+            if (!pwd_1.Equals(pwd_2) || pwd_1 == null || pwd_2 == null)
+            {
+                ViewBag.Message = "Password is not equal, please try again!";
+                ViewBag.User = login_user;
+                return View("UpdateUserInfo");
+            }
+            else
+            {
+                var baseUri = new Uri(urlString);
+                var serverClient = new ServerClient(urlString);
+                string formerPwd = login_user.pwd;
+                login_user.pwd = pwd_1;
+                System.Net.HttpStatusCode result = await serverClient.UpdatePWDAsync(login_user);
+                if (result == System.Net.HttpStatusCode.OK)
+                {
+                    ViewBag.User = login_user;
+                    ViewBag.Message = "Opreation Succeeded - status code 200!";
+                    return View("UpdateUserInfo");
+                }
+                else
+                {
+                    login_user.pwd = formerPwd;
+                    ViewBag.User = login_user;
+                    ViewBag.Message = "Opreation Failed - status code" + result + "!";
+                    return View("UpdateUserInfo");
+                }
+            }
+        }
+
+        //----------------------------------------------------------- Add balance to account ---------------------------------------------------
+        [HttpPost]
+        [Route("Client/Charge/")]
+        public async Task<IActionResult> ChargeAsync(string cardNo, string cardPwd, string cardName, double chargeAmount, int cardMonth, int cardYear, string cardCvc)
+        {
+            CardInfo cardInfo = new CardInfo(cardNo, cardPwd, cardName, chargeAmount, cardMonth, cardYear, cardCvc);
+            var baseUri = new Uri(urlString);
+            var serverClient = new ServerClient(urlString);
+            double formerBalance = login_user.balance;
+            login_user.balance = formerBalance + chargeAmount;
+            System.Net.HttpStatusCode result = await serverClient.ChargeAsync(cardInfo);
+            if (result == System.Net.HttpStatusCode.OK)
+            {
+                ViewBag.User = login_user;
+                await serverClient.UpdateBalance(login_user);
+                ViewBag.Message = "Add Balance Succeeded! - status code 200!";
+                return View("UpdateUserInfo");
+            }
+            else
+            {
+                login_user.balance = formerBalance;
+                ViewBag.User = login_user;
+                ViewBag.Message = "Charge Failed, Please Check Card Info! - status code" + result + "!";
+                return View("UpdateUserInfo");
+            }
+        }
+
+        //----------------------------------------------------------- View all order list ---------------------------------------------------
+        [HttpPost]
+        [Route("Client/OrderHistory/")]
+        public async Task<IActionResult> OrderHistoryAsync(int userID)
         {
             var baseUri = new Uri(urlString);
             var serverClient = new ServerClient(urlString);
-            double balance = await serverClient.CheckOutAsync(userID);
-            List<Item> list = await serverClient.GetItemsAsync();
-            ViewBag.Double = balance;
-            ViewBag.LinkableId = userID;
-            ViewBag.Message = userName;
-            return View("Homepage", list);
+            orderlist = await serverClient.GetMyOrderAsync(userID);
+            List<OrderInfo> viewlist = new List<OrderInfo>();
+            foreach(OrderInfo orderInfo in orderlist)
+            {
+                if(!(viewlist.Any(o => o.orderID == orderInfo.orderID)))
+                {
+                    viewlist.Add(orderInfo);
+                }
+            }
+            ViewBag.User = login_user;
+            ViewBag.List = orderlist;
+            if (orderlist.Count == 0)
+            {
+                ViewBag.Message = "Oh, you haven't bought something here yet!";
+                return View("OrderHistory", viewlist);
+            }
+            else
+            {
+                ViewBag.Message = "Here is your order history!";
+                return View("OrderHistory", viewlist);
+            }
+        }
+
+        //----------------------------------------------------------- View specific order ---------------------------------------------------
+        [HttpPost]
+        [Route("Client/SpecificOrder")]
+        public IActionResult ViewSpecificOrder(int orderID)
+        {
+            ViewBag.User = login_user;
+            ViewBag.Message = orderID;
+            List<OrderInfo> specificOrder = new List<OrderInfo>();
+            foreach(OrderInfo orderInfo in orderlist)
+            {
+                if (orderInfo.orderID == orderID) specificOrder.Add(orderInfo);
+            }
+            return View("ThisOrder", specificOrder);
         }
     }
 }

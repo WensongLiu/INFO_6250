@@ -9,6 +9,9 @@
     <PackageReference Include="Microsoft.AspNetCore.App" />
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="MySql.Data" Version="8.0.15" />
+    <PackageReference Include="NLog" Version="4.5.11" />
+    <PackageReference Include="NLog.Config" Version="4.5.11" />
+    <PackageReference Include="NLog.Web" Version="4.8.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -16,5 +19,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Remove="Models\Item.json" />
+    <Content Remove="Models\OrderManager.json" />
   </ItemGroup>
 </Project>

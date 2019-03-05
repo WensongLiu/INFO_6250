@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +12,7 @@ namespace Sneakerx_mvc.Models
     public class User
     {
         public String userName { get; set; }
+        [DataType(DataType.EmailAddress, ErrorMessage = "The format is incorrect! Please try again.")]
         public String emailAddress { get; set; }
         public String pwd { get; set; }
         public int userID { get; set; }

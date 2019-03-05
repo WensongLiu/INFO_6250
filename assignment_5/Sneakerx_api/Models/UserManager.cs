@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using MySql.Data.MySqlClient;
+using NLog;
 
 namespace Sneakerx_api.Models
 {
@@ -12,19 +13,12 @@ namespace Sneakerx_api.Models
     public class UserManager
     {
         List<User> _users;
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         public UserManager()
         {
             _users = new List<User>();
 
-            //{
-            //    new User("Wensong Liu", "lws.19940712@gmail.com", "lws1994", 000001, 3000.00, "Huazhong University of Science and Technology, Yunyuan 114, Wuhan", "13260595829", "430074", "China"),
-            //    new User("Dino Konstantopoulos", "dino.k@northeastern.edu", "ProfDino6250", 000002, 10000.00, "Northeastern University, Snell Library 115, Boston", "8570000000", "02115", "America"),
-            //    new User("Meven Edwin DCunha", "dcunha.m@husky.neu.edu", "Meven6250TA", 000003, 5000.00, "Don Bosco Institute of Technology, Electronics and Communications Engineering, Mumbai", "62506250", "400070", "India")
-            //};
-
-
-            //****************************************  Try 1  *****************************************************
             var dbCon = DatabaseConnection.Instance();
             dbCon.DatabaseName = "HW_5";
             if (dbCon.IsConnect())
@@ -51,41 +45,12 @@ namespace Sneakerx_api.Models
                 }
                 //dbCon.Close();
             }
-
-            //****************************************  Try 2  *****************************************************
-            //string connString = "SERVER=localhost" + ";" +
-            //                    "DATABASE=HW_5;" +
-            //                    "UID=root;" +
-            //                    "PASSWORD=712918Lwslbs;";
-
-            //MySqlConnection cnMySQL = new MySqlConnection(connString);
-
-            //MySqlCommand cmdMySQL = cnMySQL.CreateCommand();
-
-            //MySqlDataReader reader;
-
-            //cmdMySQL.CommandText = "select * from users";
-
-            //cnMySQL.Open();
-
-            //reader = cmdMySQL.ExecuteReader();
-
-            //DataTable dt = new DataTable();
-            //dt.Load(reader);
-
-
-            //cnMySQL.Close();
-
-
-            //_users = (from DataRow row in dt.Rows
-
-            //select new User
-            //{
-            //    _FirstName = row["FirstName"].ToString(),
-            //    _LastName = row["Last_Name"].ToString()
-
-            //}).ToList();
-
+            logger.Log(LogLevel.Trace, "Sample trace message");
+            logger.Log(LogLevel.Debug, "Sample debug message");
+            logger.Log(LogLevel.Info, "Sample informational message");
+            logger.Log(LogLevel.Warn, "Sample warning message");
+            logger.Log(LogLevel.Error, "Sample error message");
+            logger.Log(LogLevel.Fatal, "Sample fatal message");
         }
 
         //to see whether DB works
@@ -136,10 +101,10 @@ namespace Sneakerx_api.Models
                 //if (yes)
                 //{
                 //string query = "SELECT * FROM users";
-                string connString = "SERVER=localhost" + ";" +
+                string connString = "SERVER=xxxxxxxx.mysql.database.azure.com" + ";" +
                                     "DATABASE=HW_5;" +
-                                    "UID=root;" +
-                                    "PASSWORD=712918Lwslbs;";
+                                    "UID=xxxxxxx;" +
+                                    "PASSWORD=xxxxxx;";
 
                 MySqlConnection cnMySQL = new MySqlConnection(connString);
                 cnMySQL.Open();
@@ -219,6 +184,22 @@ namespace Sneakerx_api.Models
                     }
                 }
             }
+        }
+
+        public void UpdateBalance(User user)
+        {
+            string connString = "SERVER=xxxxxx.mysql.database.azure.com" + ";" +
+                                    "DATABASE=HW_5;" +
+                                    "UID=xxxxx;" +
+                                    "PASSWORD=xxxxxx;";
+
+            MySqlConnection cnMySQL = new MySqlConnection(connString);
+            cnMySQL.Open();
+            MySqlCommand cmdMySQL = cnMySQL.CreateCommand();
+            cmdMySQL.CommandText = "update users set balance = @balance where userID = @userID;";
+            cmdMySQL.Parameters.Add("@userID", MySqlDbType.VarChar).Value = user.userID;
+            cmdMySQL.Parameters.Add("@balance", MySqlDbType.Double).Value = user.balance;
+            cmdMySQL.ExecuteNonQuery();
         }
     }
 }

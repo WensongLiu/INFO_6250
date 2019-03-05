@@ -43,10 +43,10 @@ namespace Sneakerx_api.Models
             {
                 if (String.IsNullOrEmpty(databaseName))
                     return false;
-                string connString = "SERVER=localhost" + ";" +
+                string connString = "SERVER=xxxxxx.mysql.database.azure.com" + ";" +
                                     "DATABASE=HW_5;" +
-                                    "UID=root;" +
-                                    "PASSWORD=712918Lwslbs;";
+                                    "UID=xxxxxxxx;" +
+                                    "PASSWORD=xxxxxxx;";
                 connection = new MySqlConnection(connString);
                 connection.Open();
             }

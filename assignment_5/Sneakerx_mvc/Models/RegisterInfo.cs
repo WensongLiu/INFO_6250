@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
@@ -11,6 +12,9 @@ namespace Sneakerx_mvc.Models
     public class RegisterInfo
     {
         public string userName { set; get; }
+
+        [Required]
+        [EmailAddress]
         public string emailAddress { set; get; }
         public string pwd { set; get; }
         public Double balance { set; get; }

@@ -11,6 +11,7 @@ namespace Sneakerx_api.Models
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class Cart
     {
+
         List<CartInfo> _cart;
 
         public Cart()
@@ -46,10 +47,10 @@ namespace Sneakerx_api.Models
 
         public void Update(CartInfo cartInfo)
         {
-            string connString = "SERVER=localhost" + ";" +
+            string connString = "SERVER=xxxxxxxxxx.mysql.database.azure.com" + ";" +
                                 "DATABASE=HW_5;" +
-                                "UID=root;" +
-                                "PASSWORD=712918Lwslbs;";
+                                "UID=xxxxxxx;" +
+                                "PASSWORD=xxxxxxx;";
 
             MySqlConnection cnMySQL = new MySqlConnection(connString);
             cnMySQL.Open();
@@ -64,7 +65,8 @@ namespace Sneakerx_api.Models
                 cmdMySQL.Parameters.Add("@itemID", MySqlDbType.Int32).Value = cartInfo.itemID;
                 cmdMySQL.ExecuteNonQuery();
             }
-            else {
+            else
+            {
                 cmdMySQL.CommandText = "insert into cart(userID,itemID,itemName,itemSize,itemInCartAmount,price,picLink) VALUES(@userID,@itemID,@itemName,@itemSize,@itemInCartAmount,@price,@picLink);";
                 cmdMySQL.Parameters.Add("@userID", MySqlDbType.Int32).Value = cartInfo.userID;
                 cmdMySQL.Parameters.Add("@itemID", MySqlDbType.Int32).Value = cartInfo.itemID;
@@ -115,6 +117,20 @@ namespace Sneakerx_api.Models
                     }
                 }
             }
+        }
+
+        public void RemoveZero()
+        {
+            string connString = "SERVER=xxxxxxx.mysql.database.azure.com" + ";" +
+                                "DATABASE=HW_5;" +
+                                "UID=xxxx;" +
+                                "PASSWORD=xxxxxx;";
+
+            MySqlConnection cnMySQL = new MySqlConnection(connString);
+            cnMySQL.Open();
+            MySqlCommand cmdMySQL = cnMySQL.CreateCommand();
+            cmdMySQL.CommandText = "delete from cart where itemInCartAmount = 0;";
+            cmdMySQL.ExecuteNonQuery();
         }
     }
 }

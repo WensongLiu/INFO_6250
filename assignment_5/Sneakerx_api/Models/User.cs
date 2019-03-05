@@ -4,12 +4,16 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
+using MySql.Data.MySqlClient;
+using NLog;
 
 namespace Sneakerx_api.Models
 {
     // You may need to install the Microsoft.AspNetCore.Http.Abstractions package into your project
     public class User
     {
+        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+
         public String userName { get; set; }
         public String emailAddress { get; set; }
         public String pwd { get; set; }
@@ -35,6 +39,28 @@ namespace Sneakerx_api.Models
 
         public User()
         {
+        }
+
+        public void ResetPwd(int userID, string newPWD)
+        {
+            string connString = "SERVER=xxxxxxxxxx.mysql.database.azure.com" + ";" +
+                                    "DATABASE=HW_5;" +
+                                    "UID=xxxxxxx;" +
+                                    "PASSWORD=xxxxxxx;";
+
+            MySqlConnection cnMySQL = new MySqlConnection(connString);
+            cnMySQL.Open();
+            MySqlCommand cmdMySQL = cnMySQL.CreateCommand();
+            cmdMySQL.CommandText = "update users set pwd = @newPWD where users.userID = @userID;";
+            cmdMySQL.Parameters.Add("@newPWD", MySqlDbType.VarChar).Value = newPWD;
+            cmdMySQL.Parameters.Add("@userID", MySqlDbType.Int64).Value = userID;
+            cmdMySQL.ExecuteNonQuery();
+            logger.Trace("user create - Trace"); //Won't log
+            logger.Debug("user create - Debug"); //Won't log
+            logger.Info("user create - Info");   //Won't log
+            logger.Warn("user create - Warn");   //Won't log
+            logger.Error("user create - Error"); //Will log
+            logger.Fatal("user create - Fatal");
         }
     }
 }

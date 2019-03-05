@@ -1,0 +1,18 @@
+﻿<Properties StartupConfiguration="{CD620477-2829-4B66-89A7-F84742E308D2}|Default">
+  <MonoDevelop.Ide.ItemProperties.Sneakerx__api PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../../../../.nuget/packages/nlog.config/4.5.11/contentFiles/any/any/NLog.config">
+    <Files>
+      <File FileName="Controllers/ServerController.cs" Line="22" Column="23" />
+      <File FileName="../../../../../.nuget/packages/nlog.config/4.5.11/contentFiles/any/any/NLog.config" Line="52" Column="17" />
+      <File FileName="Models/CardInfo.cs" Line="1" Column="1" />
+      <File FileName="Models/User.cs" Line="58" Column="13" />
+      <File FileName="Models/UserManager.cs" Line="58" Column="9" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
