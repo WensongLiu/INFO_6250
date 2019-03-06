@@ -12340,11 +12340,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/G/Documents/2019_Spring/web_tools_6250/HW5/Sneakerx_api/Sneakerx_api.csproj",
+      "projectUniqueName": "/Users/G/Documents/my_github/INFO_6250/assignment_5/Sneakerx_api/Sneakerx_api.csproj",
       "projectName": "Sneakerx_api",
-      "projectPath": "/Users/G/Documents/2019_Spring/web_tools_6250/HW5/Sneakerx_api/Sneakerx_api.csproj",
+      "projectPath": "/Users/G/Documents/my_github/INFO_6250/assignment_5/Sneakerx_api/Sneakerx_api.csproj",
       "packagesPath": "/Users/G/.nuget/packages/",
-      "outputPath": "/Users/G/Documents/2019_Spring/web_tools_6250/HW5/Sneakerx_api/obj",
+      "outputPath": "/Users/G/Documents/my_github/INFO_6250/assignment_5/Sneakerx_api/obj",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"

@@ -22,14 +22,8 @@
         /* ----- BASIC ELEMENTS AND FONTS ----- */
 
 
-        html,
-        body {
-            color: #fff;
-            font-size: 11px;
-            font-family: 'Tahoma';
-            background: url("../assets/bg.jpg") no-repeat;
-            background-size: 100%;
-        }
+    html,
+    body { color: #fff; font-size: 11px; font-family: 'Tahoma'; background: url("https://previews.123rf.com/images/fleren/fleren1703/fleren170300015/74410830-boots-doodle-pattern-background-with-doodle-shoes-with-sneakers-loafers-and-sport-boots-vector-black.jpg") no-repeat; background-size: 100%; }
 
         button {
             width: 100px;
@@ -447,15 +441,7 @@
                 $('#divSuccessMessage').hide();
             }
         </script>*@
-    @if (ViewBag.successMessage != null)
-    {
-        <script type="text/javascript">
-                    window.onload = function()
-                    {
-                        alert("@ViewBag.successMessage");
-                    };
-        </script>
-    }
+
 </head>
 
 <body>
@@ -463,7 +449,7 @@
     <div id="container">
         <div id="head">
             <div id="menu_header">
-                <span id="head_left" class="yellow">Hi, @ViewBag.User.userName,you have logged in successfully!</span>
+                <span id="head_left" class="yellow"></span>
                 <span id="head_right" class="yellow">Your balance is @ViewBag.User.balance!</span>
             </div>
         </div>
@@ -496,7 +482,7 @@
                     <br />
                 </div>
                 <div class="content">
-                    <h3 class="yellow">These are the details of Order:@ViewBag.Message</h3>
+                    <h3 class="yellow">Hi, @ViewBag.User.userName, here is all your order history!</h3>
                     <table class="shoppingcart">
                         <thead>
                             <tr id="tablehead" style="text-align:center; font-size:9px">

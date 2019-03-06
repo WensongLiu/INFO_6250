@@ -14,7 +14,7 @@ namespace Sneakerx_api.Controllers
 {
     public class ServerController : Controller
     {
-        private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
+        //private static NLog.Logger logger = NLog.LogManager.GetCurrentClassLogger();
 
         static UserManager um = new UserManager();
         static Cart cart = new Cart();
@@ -27,12 +27,12 @@ namespace Sneakerx_api.Controllers
         [Route("api/[controller]/All")]
         public IEnumerable<User> Get()
         {
-            logger.Trace("All users' info - Trace"); //Won't log
-            logger.Debug("All users' info - Debug"); //Won't log
-            logger.Info("All users' info - Info");   //Won't log
-            logger.Warn("All users' info - Warn");   //Won't log
-            logger.Error("All users' info - Error"); //Will log
-            logger.Fatal("All users' info - Fatal");
+            //logger.Trace("All users' info - Trace"); //Won't log
+            //logger.Debug("All users' info - Debug"); //Won't log
+            //logger.Info("All users' info - Info");   //Won't log
+            //logger.Warn("All users' info - Warn");   //Won't log
+            //logger.Error("All users' info - Error"); //Will log
+            //logger.Fatal("All users' info - Fatal");
             return um.GetAll;
         }
 
@@ -65,12 +65,12 @@ namespace Sneakerx_api.Controllers
                 }
                 //dbCon.Close();
             }
-            logger.Trace("All items' info - Trace"); //Won't log
-            logger.Debug("All items' info - Debug"); //Won't log
-            logger.Info("All items' info - Info");   //Won't log
-            logger.Warn("All items' info - Warn");   //Won't log
-            logger.Error("All items' info - Error"); //Will log
-            logger.Fatal("All items' info - Fatal");
+            //logger.Trace("All items' info - Trace"); //Won't log
+            //logger.Debug("All items' info - Debug"); //Won't log
+            //logger.Info("All items' info - Info");   //Won't log
+            //logger.Warn("All items' info - Warn");   //Won't log
+            //logger.Error("All items' info - Error"); //Will log
+            //logger.Fatal("All items' info - Fatal");
             return itemlist;
         }
 
@@ -91,7 +91,7 @@ namespace Sneakerx_api.Controllers
         {
 
             String userName = registerInfo.userName;
-            logger.Info(userName);
+            //logger.Info(userName);
             String email = registerInfo.emailAddress;
             String pwd = registerInfo.pwd;
             double balance = registerInfo.balance;
@@ -133,10 +133,10 @@ namespace Sneakerx_api.Controllers
             List<CartInfo> itemBought = new List<CartInfo>();
             itemBought = cart.GetUserCart(userID);
             Double moneySpent = 0.0;
-            string connString = "SERVER=xxxxxxxx.mysql.database.azure.com" + ";" +
+            string connString = "SERVER=xxxx.mysql.database.azure.com" + ";" +
                                 "DATABASE=HW_5;" +
-                                "UID=xxxxxxxxxxx;" +
-                                "PASSWORD=xxxxxxxxx;";
+                                "UID=xxxxxx;" +
+                                "PASSWORD=xxxxxx;";
 
             MySqlConnection cnMySQL = new MySqlConnection(connString);
             cnMySQL.Open();
@@ -226,6 +226,25 @@ namespace Sneakerx_api.Controllers
             om.HistoryUpdate();
             List<OrderInfo>MyOrder = om.GetOrder(userID);
             return MyOrder;
+        }
+
+        [HttpPost]
+        [Route("api/[controller]/Log")]
+        public void Log([FromBody]Log log)
+        {
+            string connString = "SERVER=xxxx.mysql.database.azure.com" + ";" +
+                                "DATABASE=HW_5;" +
+                                "UID=xxxxx;" +
+                                "PASSWORD=xxxxx;";
+
+            MySqlConnection cnMySQL = new MySqlConnection(connString);
+            cnMySQL.Open();
+
+            MySqlCommand cmdMySQL_log = cnMySQL.CreateCommand();
+            cmdMySQL_log.CommandText = "insert into log_record(userID,record) values(@userID, @record);";
+            cmdMySQL_log.Parameters.Add("@userID", MySqlDbType.Int32).Value = log.userID;
+            cmdMySQL_log.Parameters.Add("@record", MySqlDbType.VarChar).Value = log.record;
+            cmdMySQL_log.ExecuteNonQuery();
         }
     }
 }

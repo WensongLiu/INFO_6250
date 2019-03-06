@@ -4531,10 +4531,11 @@
   },
   "libraries": {
     "AspNetCore.DataProtection.Aws.S3/2.0.2": {
-      "sha512": "wTaCyh8Z1HGLtTgGRXEspMYVYkMXmhD9ZdAID0NfoZOa9yepUx9F6SPU1oMhQ6zm9FGIC6fifp4WfwbfBkXWXQ==",
+      "sha512": "5SE+cVRt5PoCgyPcsqU4K2aDS/c2cpw2f7noeYOUOSZYFgZFprFGX0fQQ5Bk7NO1rpjE45rYjCvGR0a7b1f4JA==",
       "type": "package",
       "path": "aspnetcore.dataprotection.aws.s3/2.0.2",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "aspnetcore.dataprotection.aws.s3.2.0.2.nupkg.sha512",
         "aspnetcore.dataprotection.aws.s3.nuspec",
@@ -4543,10 +4544,12 @@
       ]
     },
     "AWSSDK.Core/3.3.31.12": {
-      "sha512": "lRpkY4Ouf++Dkh1I1eOGiwVdyIje2tbOMRcquz9IO6D7hd4ThRUiXivZgt2/JUFiy1A5id/GzQRJzqfhapmMww==",
+      "sha512": "+siZzfUs8kymMc+17fhzbu7hATItk9+1S0E5R8KShXj/zK4rgJKoabe5cdo8JQlhHqvgW2P5sEl+DWTrdLhgJw==",
       "type": "package",
       "path": "awssdk.core/3.3.31.12",
+      "hasTools": true,
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "awssdk.core.3.3.31.12.nupkg.sha512",
         "awssdk.core.nuspec",
@@ -4587,10 +4590,12 @@
       ]
     },
     "AWSSDK.S3/3.3.17.2": {
-      "sha512": "LiKExlk638jXvKrFq547XjClXGbTrPWGjER2KXmTTBFUwa5qOVUgn+wmgitQaH0mqreNOvQBz0Y5xof6uzsDow==",
+      "sha512": "EQzhXZ2GqxxYk+y77y7LSeaVr4wzWDY8KiYBCUF4wOCT8chjTjv3iNE3TDeFVIyhINqmiE+4LV1eAKzidV9JCw==",
       "type": "package",
       "path": "awssdk.s3/3.3.17.2",
+      "hasTools": true,
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "analyzers/dotnet/cs/AWSSDK.S3.CodeAnalysis.dll",
         "awssdk.s3.3.3.17.2.nupkg.sha512",
@@ -9483,7 +9488,7 @@
       ]
     },
     "System.Net.Http/4.3.0": {
-      "sha512": "FgEsJrqZPGRhQ05+5Lb6UTegH9v6P+aoTxtidHuO9wz2lS48aTXtKfqbrkuf6GRKOlBaRrABcuv1ztnKMYETtA==",
+      "sha512": "tl1PFGtt5Oj4vmXWE/rqp35dPa14dFDCeJExeCO3nDS9gncgpyu0395sv8tISlFkOrq/8FuktRM05vO/afx2ig==",
       "type": "package",
       "path": "system.net.http/4.3.0",
       "files": [
@@ -9643,10 +9648,11 @@
       ]
     },
     "System.Net.Requests/4.0.11": {
-      "sha512": "IvOLGTTzJ2y5GpSn0ewgypC52TCCD6tYU8MdLedtZQW0VcP241b6sRJ2rLhFFPn5n+biTXXuYGfaTyT3CVUf8Q==",
+      "sha512": "vxGt7C0cZixN+VqoSW4Yakc1Y9WknmxauDqzxgpw/FnBdz4kQNN51l4wxdXX5VY1xjqy//+G+4CvJWp1+f+y6Q==",
       "type": "package",
       "path": "system.net.requests/4.0.11",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -9725,10 +9731,11 @@
       ]
     },
     "System.Net.WebHeaderCollection/4.0.1": {
-      "sha512": "0aLl8yaaH+/jyI0f1Mn9xOvBWWwyOaJm/pR2SPAN2RvxhTD/yxxPaZt5d+2KXAZdPkJOafS4QQ1GaXhZcMN16g==",
+      "sha512": "XX2TIAN+wBSAIV51BU2FvvXMdstUa8b0FBSZmDWjZdwUMmggQSifpTOZ5fNH20z9ZCg2fkV1L5SsZnpO2RQDRQ==",
       "type": "package",
       "path": "system.net.webheadercollection/4.0.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "ThirdPartyNotices.txt",
         "dotnet_library_license.txt",
@@ -10027,7 +10034,7 @@
       ]
     },
     "System.Reflection.Emit.ILGeneration/4.3.0": {
-      "sha512": "X9mjOA/NY26QS0dbJ1gbby+cQfHWXqn6noh5rmCGjaSzunkanPQMLPbXfjMFg/s5ywgY0xTlwxERG62ixiUlAA==",
+      "sha512": "AAmoKgvHAaPX+bHb3NnbBgL3YJUWr3cadpqE9fr4kPhzWc+TmTj0/8Wet7ujH+3jw5p6qm5TjNTxr75jOgLSHg==",
       "type": "package",
       "path": "system.reflection.emit.ilgeneration/4.3.0",
       "files": [
@@ -12376,17 +12383,17 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/Users/G/Documents/2019_Spring/web_tools_6250/HW5/Sneakerx_mvc/Sneakerx_mvc.csproj",
+      "projectUniqueName": "/Users/G/Desktop/Sneakerx_mvc/Sneakerx_mvc.csproj",
       "projectName": "Sneakerx_mvc",
-      "projectPath": "/Users/G/Documents/2019_Spring/web_tools_6250/HW5/Sneakerx_mvc/Sneakerx_mvc.csproj",
+      "projectPath": "/Users/G/Desktop/Sneakerx_mvc/Sneakerx_mvc.csproj",
       "packagesPath": "/Users/G/.nuget/packages/",
-      "outputPath": "/Users/G/Documents/2019_Spring/web_tools_6250/HW5/Sneakerx_mvc/obj",
+      "outputPath": "/Users/G/Desktop/Sneakerx_mvc/obj/",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "/usr/local/share/dotnet/sdk/NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "/Users/G/.config/NuGet/NuGet.Config"
+        "/Users/G/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"
@@ -12419,7 +12426,8 @@
           "Microsoft.AspNetCore.App": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[2.2.0, )"
+            "version": "[2.2.0, )",
+            "autoReferenced": true
           },
           "Microsoft.AspNetCore.Razor.Design": {
             "suppressParent": "All",

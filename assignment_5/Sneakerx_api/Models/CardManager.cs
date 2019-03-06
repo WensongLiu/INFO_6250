@@ -55,10 +55,10 @@ namespace Sneakerx_api.Models
                  && o.cardMonth == cardInfo.cardMonth
                  && o.cardBalance >= cardInfo.cardBalance))
             {
-                string connString = "SERVER=xxxxxxxxxx.mysql.database.azure.com" + ";" +
+                string connString = "SERVER=xxxx.mysql.database.azure.com" + ";" +
                                     "DATABASE=HW_5;" +
-                                    "UID=xxxxxxx;" +
-                                    "PASSWORD=xxxxxxx;";
+                                    "UID=xxxxx;" +
+                                    "PASSWORD=xxxxx;";
 
                 MySqlConnection cnMySQL = new MySqlConnection(connString);
                 cnMySQL.Open();

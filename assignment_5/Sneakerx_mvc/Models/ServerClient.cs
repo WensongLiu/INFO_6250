@@ -217,6 +217,19 @@ namespace Sneakerx_mvc.Models
             }
         }
 
+        public async Task RecordLog(Log log)
+        {
+            var client = new HttpClient();
+            client.BaseAddress = new Uri(new Uri(_hostUri), "api/Server/" + "Log");
+            using (client)
+            {
+                HttpResponseMessage response;
+                var output = JsonConvert.SerializeObject(log);
+                HttpContent contentPost = new StringContent(output, System.Text.Encoding.UTF8, "application/json");
+                response = await client.PostAsync(client.BaseAddress, contentPost);
+            }
+        }
+
         public async Task<List<OrderInfo>> GetMyOrderAsync(int userID)
         {
             var client = new HttpClient();

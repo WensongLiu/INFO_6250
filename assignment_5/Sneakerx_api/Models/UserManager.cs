@@ -101,10 +101,10 @@ namespace Sneakerx_api.Models
                 //if (yes)
                 //{
                 //string query = "SELECT * FROM users";
-                string connString = "SERVER=xxxxxxxx.mysql.database.azure.com" + ";" +
+                string connString = "SERVER=xxxx.mysql.database.azure.com" + ";" +
                                     "DATABASE=HW_5;" +
-                                    "UID=xxxxxxx;" +
-                                    "PASSWORD=xxxxxx;";
+                                    "UID=xxxxx;" +
+                                    "PASSWORD=xxxxx;";
 
                 MySqlConnection cnMySQL = new MySqlConnection(connString);
                 cnMySQL.Open();
@@ -188,10 +188,10 @@ namespace Sneakerx_api.Models
 
         public void UpdateBalance(User user)
         {
-            string connString = "SERVER=xxxxxx.mysql.database.azure.com" + ";" +
+            string connString = "SERVER=hw5-info6250.mysql.database.azure.com" + ";" +
                                     "DATABASE=HW_5;" +
-                                    "UID=xxxxx;" +
-                                    "PASSWORD=xxxxxx;";
+                                    "UID=Wensong-Liu@hw5-info6250;" +
+                                    "PASSWORD=712918Lwslbs;";
 
             MySqlConnection cnMySQL = new MySqlConnection(connString);
             cnMySQL.Open();

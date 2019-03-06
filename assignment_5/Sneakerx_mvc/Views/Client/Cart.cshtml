@@ -7,33 +7,27 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html lang="en">
 <html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <title>Cart</title>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-        <script src="http://code.jquery.com/jquery-3.3.1.min.js"
-                crossorigin="anonymous"></script>
-        <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
-                crossorigin="anonymous"></script>
-        <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
-        <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-        <meta name="description" content="Shopping Website" />
-        <meta name="keywords" content="Sneaker & Shopping & MVC & API & MySQL & .NET & Azure" />
-        <meta name="author" content="Wensong Liu" />
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">    
-        <style>
+<head>
+    <title>Cart</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            crossorigin="anonymous"></script>
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <meta name="description" content="Shopping Website" />
+    <meta name="keywords" content="Sneaker & Shopping & MVC & API & MySQL & .NET & Azure" />
+    <meta name="author" content="Wensong Liu" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" />
+    <style>
             /* ----- BASIC ELEMENTS AND FONTS ----- */
 
 
-            html,
-            body {
-                color: #fff;
-                font-size: 11px;
-                font-family: 'Tahoma';
-                background: url("../assets/bg.jpg") no-repeat;
-                background-size: 100%;
-            }
+    html,
+    body { color: #fff; font-size: 11px; font-family: 'Tahoma'; background: url("https://previews.123rf.com/images/fleren/fleren1703/fleren170300015/74410830-boots-doodle-pattern-background-with-doodle-shoes-with-sneakers-loafers-and-sport-boots-vector-black.jpg") no-repeat; background-size: 100%; }
 
             button {
                 width: 100px;
@@ -115,7 +109,7 @@
                 text-transform: uppercase;
                 font-weight: normal;
                 /* margin: 0px 0px 0px 0px !important;
-    margin: 10px 0px 0px 0px; */
+        margin: 10px 0px 0px 0px; */
                 color: #fff;
             }
 
@@ -440,34 +434,34 @@
                 #item_content img:hover {
                     transform: scale(2);
                 }
-        </style>
-        @*<script>
-                if('@ViewBag.successMessage'!="")
-                {
-                    $('#divSuccessMessage').show();
-                }
-                else
-                {
-                    $('#divSuccessMessage').hide();
-                }
-            </script>*@
-        @if (ViewBag.Message != null)
-        {
-            <script type="text/javascript">
+    </style>
+    @*<script>
+            if('@ViewBag.successMessage'!="")
+            {
+                $('#divSuccessMessage').show();
+            }
+            else
+            {
+                $('#divSuccessMessage').hide();
+            }
+        </script>*@
+    @if (ViewBag.Message != null)
+    {
+        <script type="text/javascript">
                     window.onload = function()
                     {
                         alert("@ViewBag.Message");
                     };
-            </script>
-        }
-    </head>
+        </script>
+    }
+</head>
 
 <body>
 
     <div id="container">
         <div id="head">
             <div id="menu_header">
-                <span id="head_left" class="yellow">Hi, @ViewBag.User.userName,you have logged in successfully!</span>
+                <span id="head_left" class="yellow">@ViewBag.User.userName, here is your cart!</span>
                 <span id="head_right" class="yellow">Your balance is @ViewBag.User.balance!</span>
             </div>
         </div>

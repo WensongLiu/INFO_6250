@@ -3315,21 +3315,21 @@
     "AspNetCore.DataProtection.Aws.S3/2.0.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-wTaCyh8Z1HGLtTgGRXEspMYVYkMXmhD9ZdAID0NfoZOa9yepUx9F6SPU1oMhQ6zm9FGIC6fifp4WfwbfBkXWXQ==",
+      "sha512": "sha512-5SE+cVRt5PoCgyPcsqU4K2aDS/c2cpw2f7noeYOUOSZYFgZFprFGX0fQQ5Bk7NO1rpjE45rYjCvGR0a7b1f4JA==",
       "path": "aspnetcore.dataprotection.aws.s3/2.0.2",
       "hashPath": "aspnetcore.dataprotection.aws.s3.2.0.2.nupkg.sha512"
     },
     "AWSSDK.Core/3.3.31.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-lRpkY4Ouf++Dkh1I1eOGiwVdyIje2tbOMRcquz9IO6D7hd4ThRUiXivZgt2/JUFiy1A5id/GzQRJzqfhapmMww==",
+      "sha512": "sha512-+siZzfUs8kymMc+17fhzbu7hATItk9+1S0E5R8KShXj/zK4rgJKoabe5cdo8JQlhHqvgW2P5sEl+DWTrdLhgJw==",
       "path": "awssdk.core/3.3.31.12",
       "hashPath": "awssdk.core.3.3.31.12.nupkg.sha512"
     },
     "AWSSDK.S3/3.3.17.2": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-LiKExlk638jXvKrFq547XjClXGbTrPWGjER2KXmTTBFUwa5qOVUgn+wmgitQaH0mqreNOvQBz0Y5xof6uzsDow==",
+      "sha512": "sha512-EQzhXZ2GqxxYk+y77y7LSeaVr4wzWDY8KiYBCUF4wOCT8chjTjv3iNE3TDeFVIyhINqmiE+4LV1eAKzidV9JCw==",
       "path": "awssdk.s3/3.3.17.2",
       "hashPath": "awssdk.s3.3.3.17.2.nupkg.sha512"
     },
@@ -3385,14 +3385,14 @@
     "System.Net.Requests/4.0.11": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-IvOLGTTzJ2y5GpSn0ewgypC52TCCD6tYU8MdLedtZQW0VcP241b6sRJ2rLhFFPn5n+biTXXuYGfaTyT3CVUf8Q==",
+      "sha512": "sha512-vxGt7C0cZixN+VqoSW4Yakc1Y9WknmxauDqzxgpw/FnBdz4kQNN51l4wxdXX5VY1xjqy//+G+4CvJWp1+f+y6Q==",
       "path": "system.net.requests/4.0.11",
       "hashPath": "system.net.requests.4.0.11.nupkg.sha512"
     },
     "System.Net.WebHeaderCollection/4.0.1": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-0aLl8yaaH+/jyI0f1Mn9xOvBWWwyOaJm/pR2SPAN2RvxhTD/yxxPaZt5d+2KXAZdPkJOafS4QQ1GaXhZcMN16g==",
+      "sha512": "sha512-XX2TIAN+wBSAIV51BU2FvvXMdstUa8b0FBSZmDWjZdwUMmggQSifpTOZ5fNH20z9ZCg2fkV1L5SsZnpO2RQDRQ==",
       "path": "system.net.webheadercollection/4.0.1",
       "hashPath": "system.net.webheadercollection.4.0.1.nupkg.sha512"
     },
@@ -4939,7 +4939,7 @@
     "System.Net.Http/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-FgEsJrqZPGRhQ05+5Lb6UTegH9v6P+aoTxtidHuO9wz2lS48aTXtKfqbrkuf6GRKOlBaRrABcuv1ztnKMYETtA==",
+      "sha512": "sha512-tl1PFGtt5Oj4vmXWE/rqp35dPa14dFDCeJExeCO3nDS9gncgpyu0395sv8tISlFkOrq/8FuktRM05vO/afx2ig==",
       "path": "system.net.http/4.3.0",
       "hashPath": "system.net.http.4.3.0.nupkg.sha512"
     },
@@ -4995,7 +4995,7 @@
     "System.Reflection.Emit.ILGeneration/4.3.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-X9mjOA/NY26QS0dbJ1gbby+cQfHWXqn6noh5rmCGjaSzunkanPQMLPbXfjMFg/s5ywgY0xTlwxERG62ixiUlAA==",
+      "sha512": "sha512-AAmoKgvHAaPX+bHb3NnbBgL3YJUWr3cadpqE9fr4kPhzWc+TmTj0/8Wet7ujH+3jw5p6qm5TjNTxr75jOgLSHg==",
       "path": "system.reflection.emit.ilgeneration/4.3.0",
       "hashPath": "system.reflection.emit.ilgeneration.4.3.0.nupkg.sha512"
     },

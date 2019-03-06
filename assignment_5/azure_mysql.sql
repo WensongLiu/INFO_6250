@@ -110,18 +110,11 @@ values (00000, 00000, 00000, "default", "default", "0", 0, 0.0, 0.0);
 select * from order_history;
 
 
-CREATE TABLE `log` (
-  `Id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-  `Application` varchar(50) DEFAULT NULL,
-  `Logged` datetime DEFAULT NULL,
-  `Level` varchar(50) DEFAULT NULL,
-  `Message` varchar(512) DEFAULT NULL,
-  `Logger` varchar(250) DEFAULT NULL,
-  `Callsite` varchar(512) DEFAULT NULL,
-  `Exception` varchar(512) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+CREATE TABLE log_record(
+  userID int not null,
+  record varchar(400)
+) ;
 
-select * from log;
+select * from log_record;
 
 

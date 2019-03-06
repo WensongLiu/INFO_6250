@@ -43,10 +43,10 @@ namespace Sneakerx_api.Models
 
         public void ResetPwd(int userID, string newPWD)
         {
-            string connString = "SERVER=xxxxxxxxxx.mysql.database.azure.com" + ";" +
-                                    "DATABASE=HW_5;" +
-                                    "UID=xxxxxxx;" +
-                                    "PASSWORD=xxxxxxx;";
+            string connString = "SERVER=xxxx.mysql.database.azure.com" + ";" +
+                                "DATABASE=HW_5;" +
+                                "UID=xxxxx;" +
+                                "PASSWORD=xxxxx;";
 
             MySqlConnection cnMySQL = new MySqlConnection(connString);
             cnMySQL.Open();

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <parameters>
-  <parameter name="IIS Web Application Name" description="" value="hw5-api-info6250" tags="IisApp">
-    <parameterEntry kind="ProviderPath" scope="IisApp" match="^/Users/G/Documents/2019_Spring/web_tools_6250/HW_5/Sneakerx_api/obj/Release/netcoreapp2\.2/PubTmp/Out/$" />
+  <parameter name="IIS Web Application Name" description="" value="info6250-hw5-server" tags="IisApp">
+    <parameterEntry kind="ProviderPath" scope="IisApp" match="^/Users/G/Documents/2019_Spring/web_tools_6250/HW5/Sneakerx_api/obj/Release/netcoreapp2\.2/PubTmp/Out/$" />
   </parameter>
 </parameters>

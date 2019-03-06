@@ -47,10 +47,10 @@ namespace Sneakerx_api.Models
 
         public void Update(CartInfo cartInfo)
         {
-            string connString = "SERVER=xxxxxxxxxx.mysql.database.azure.com" + ";" +
+            string connString = "SERVER=xxxx.mysql.database.azure.com" + ";" +
                                 "DATABASE=HW_5;" +
-                                "UID=xxxxxxx;" +
-                                "PASSWORD=xxxxxxx;";
+                                "UID=xxxxx;" +
+                                "PASSWORD=xxxxx;";
 
             MySqlConnection cnMySQL = new MySqlConnection(connString);
             cnMySQL.Open();
@@ -121,10 +121,10 @@ namespace Sneakerx_api.Models
 
         public void RemoveZero()
         {
-            string connString = "SERVER=xxxxxxx.mysql.database.azure.com" + ";" +
+            string connString = "SERVER=hw5-info6250.mysql.database.azure.com" + ";" +
                                 "DATABASE=HW_5;" +
-                                "UID=xxxx;" +
-                                "PASSWORD=xxxxxx;";
+                                "UID=Wensong-Liu@hw5-info6250;" +
+                                "PASSWORD=712918Lwslbs;";
 
             MySqlConnection cnMySQL = new MySqlConnection(connString);
             cnMySQL.Open();

@@ -31,9 +31,9 @@ namespace Sneakerx_mvc.Controllers
 
         //MySQL's localhost address
         //local api for test
-        String urlString = "https://localhost:6001/";
+        //String urlString = "https://localhost:6001/";
         //azure api's url
-        //String urlString = "https://xxxxxxxxxx.azurewebsites.net";
+        String urlString = "xxxxxxx";
 
         //-----------------------------------------------------------------------Login-------------------------------------------------------------------
         [HttpPost]
@@ -57,7 +57,14 @@ namespace Sneakerx_mvc.Controllers
 
                 if (pwd.Equals("noExist")) return RegisterPage();
                 else if (pwd.Equals("wrong")) return WrongPwd();
-                else return await AfterLoginAsync();
+                else 
+                {
+                    String record_login = "User log in successfully!";
+                    Log log_login = new Log(login_user.userID, record_login);
+                    await serverClient.RecordLog(log_login);
+                    return await AfterLoginAsync();
+                }
+
             }
         }
 
@@ -139,11 +146,11 @@ namespace Sneakerx_mvc.Controllers
             if (addItemToCart.Equals("Add To Cart"))
             {
                 add = 1;
-                ViewBag.successMessage = "Add To Cart Successfully!";
+                ViewBag.Message = "Add To Cart Successfully!";
             }
             else {
                 add = -1;
-                ViewBag.successMessage = "Remove From Cart Successfully!";
+                ViewBag.Message = "Remove From Cart Successfully!";
             }
 
             CartInfo ci = new CartInfo(userID, itemID, itemName, itemSize, add, price, picLink);
@@ -155,8 +162,20 @@ namespace Sneakerx_mvc.Controllers
             ViewBag.User = login_user;
             //ViewBag.LinkableId = userID;
             //ViewBag.Double = balance;
-            if (addItemToCart.Equals("Remove")) return View("Cart", cartlist);
-            else return View("Homepage", list);
+            if (addItemToCart.Equals("Remove"))
+            {
+                String removeMessage ="Item "+ itemID + " has been removed from user's cart successfully!";
+                Log log_itemAdd = new Log(userID, removeMessage);
+                await serverClient.RecordLog(log_itemAdd);
+                return View("Cart", cartlist);
+            }
+            else
+            {
+                String addMessage = "Item "+itemID + " has added to user's cart successfully!";
+                Log log_itemAdd = new Log(userID, addMessage);
+                await serverClient.RecordLog(log_itemAdd);
+                return View("Homepage", list);
+            } 
             //ViewData["Integer"] = userID;
             //return  View("Success");
         }
@@ -178,6 +197,8 @@ namespace Sneakerx_mvc.Controllers
         [Route("Client/CheckOutAsync/")]
         public async Task<IActionResult> CheckOutAsync(int userID)
         {
+            var baseUri = new Uri(urlString);
+            var serverClient = new ServerClient(urlString);
             double totalCost = 0.0;
             //To check balance
             foreach (CartInfo ci in cartlist)
@@ -188,16 +209,19 @@ namespace Sneakerx_mvc.Controllers
             {
                 ViewBag.User = login_user;
                 ViewBag.Message = "Sorry, please add some balance first!";
+                Log log_checkout = new Log(login_user.userID, "Check out failed. No enough balance.");
+                await serverClient.RecordLog(log_checkout);
                 return View("Cart", cartlist);
             }
             else
             {
-                var baseUri = new Uri(urlString);
-                var serverClient = new ServerClient(urlString);
                 double balance = await serverClient.CheckOutAsync(userID);
                 List<Item> list = await serverClient.GetItemsAsync();
                 login_user.balance = balance;
                 ViewBag.User = login_user;
+                Log log_checkout = new Log(login_user.userID, "Check out succeeded.");
+                await serverClient.RecordLog(log_checkout);
+                ViewBag.Message = "Congratulations, your order has been placed!";
                 return View("Homepage", list);
             }
         }
@@ -259,14 +283,21 @@ namespace Sneakerx_mvc.Controllers
             if (result == System.Net.HttpStatusCode.OK)
             {
                 ViewBag.User = login_user;
+                string charge_record = chargeAmount + " has been added to user's account successfully!";
+                Log log_charge = new Log(login_user.userID, charge_record);
                 await serverClient.UpdateBalance(login_user);
+                await serverClient.RecordLog(log_charge);
                 ViewBag.Message = "Add Balance Succeeded! - status code 200!";
+
                 return View("UpdateUserInfo");
             }
             else
             {
                 login_user.balance = formerBalance;
                 ViewBag.User = login_user;
+                string charge_record = "Something wrong here, balance isn't added to user's account successfully!";
+                Log log_charge = new Log(login_user.userID, charge_record);
+                await serverClient.RecordLog(log_charge);
                 ViewBag.Message = "Charge Failed, Please Check Card Info! - status code" + result + "!";
                 return View("UpdateUserInfo");
             }
