@@ -1,0 +1,114 @@
+﻿@page
+@model List<PicInfo> ;
+@{
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Puzzle</title>
+    <link href="style.css" rel="stylesheet" />
+    <link href="image-puzzle.css" rel="stylesheet" />
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="jquery-ui.js"></script>
+    <script src="image-puzzle.js"></script>
+
+    <!-- import jQuery  -->
+    <script src="http://code.jquery.com/jquery-3.3.1.min.js"
+            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+            crossorigin="anonymous"></script>
+    <!-- import jQuery-UI -->
+    <script src="http://code.jquery.com/ui/1.12.1/jquery-ui.min.js"
+            integrity="sha256-VazP97ZCwtekAsvgPBSUwPFKdrwD3unUfSGVYrahUqU="
+            crossorigin="anonymous"></script>
+
+    <!-- css for jQuery-UI -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+</head>
+
+<body>
+    <div id="collage">
+        <h2>Image Puzzle</h2>
+        <hr />
+        <div id="playPanel" style="padding:5px;display:none;">
+            <h3 id="imgTitle"></h3> <hr />
+            <div style="display:inline-block; margin:auto; width:95%; vertical-align:top;">
+                <ul id="sortable" class="sortable"></ul>
+                <div id="actualImageBox">
+                    <div id="stepBox">
+                        <div>Steps:</div><div class="stepCount">0</div>
+                    </div>
+                    <div id="timeBox">
+                        Time Taken: <span id="timerPanel"></span> secs
+                    </div>
+                    <img id="actualImage" />
+                    <div>Re-arrange to create a picture like this.</div>
+                    <p id="levelPanel">
+                        <input type="radio" name="level" id="easy" checked="checked" value="3" /> <label for="easy">Easy</label>
+                        <input type="radio" name="level" id="medium" value="4" /> <label for="medium">Medium</label>
+                        <input type="radio" name="level" id="hard" value="5" /> <label for="hard">Hard</label>
+                    </p>
+                    <div>
+                        <button id="btnRule" type="button" class="btn" onclick="rules();">Rules</button>
+                        <button id="newPhoto" type="button" class="btn">Another Photo</button>
+                        <button id="btnReplay" type="button" class="btn" onclick="about();">About</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="gameOver" style="display:none;">
+            <div style="background-color: #fc9e9e; padding: 5px 10px 20px 10px; text-align: center; ">
+                <h2 style="text-align:center">Game Over!!</h2>
+                Congratulations!! <br /> You have completed this picture.
+                <br />
+                Steps: <span class="stepCount">0</span> steps.
+                <br />
+                Time Taken: <span class="timeCount">0</span> seconds<br />
+                <div>
+                    <button type="button" onclick="window.location.reload(true);">Play Again</button>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            var images = [
+                { src: '@ViewBag.PicInfo_1.picLink', title: '@ViewBag.PicInfo_1.picTittle' },
+                { src: '@ViewBag.PicInfo_2.picLink', title: '@ViewBag.PicInfo_2.picTittle' },
+                { src: '@ViewBag.PicInfo_3.picLink', title: '@ViewBag.PicInfo_3.picTittle' },
+                { src: '@ViewBag.PicInfo_4.picLink', title: '@ViewBag.PicInfo_4.picTittle' },
+                { src: '@ViewBag.PicInfo_5.picLink', title: '@ViewBag.PicInfo_5.picTittle' },
+                { src: '@ViewBag.PicInfo_6.picLink', title: '@ViewBag.PicInfo_6.picTittle' },
+                { src: '@ViewBag.PicInfo_7.picLink', title: '@ViewBag.PicInfo_7.picTittle' },
+                { src: '@ViewBag.PicInfo_8.picLink', title: '@ViewBag.PicInfo_8.picTittle' },
+                { src: '@ViewBag.PicInfo_9.picLink', title: '@ViewBag.PicInfo_9.picTittle' },
+                { src: '@ViewBag.PicInfo_10.picLink', title: '@ViewBag.PicInfo_10.picTittle' },
+                { src: '@ViewBag.PicInfo_11.picLink', title: '@ViewBag.PicInfo_11.picTittle' },
+                { src: '@ViewBag.PicInfo_12.picLink', title: '@ViewBag.PicInfo_12.picTittle' },
+                { src: '@ViewBag.PicInfo_13.picLink', title: '@ViewBag.PicInfo_13.picTittle' },
+                { src: '@ViewBag.PicInfo_14.picLink', title: '@ViewBag.PicInfo_14.picTittle' },
+                { src: '@ViewBag.PicInfo_15.picLink', title: '@ViewBag.PicInfo_15.picTittle' }
+            ];
+
+            $(function () {
+                var gridSize = $('#levelPanel :radio:checked').val();
+                imagePuzzle.startGame(images, gridSize);
+                $('#newPhoto').click(function () {
+                    var gridSize = $('#levelPanel :radio:checked').val();  // Take the updated gridSize from UI.
+                    imagePuzzle.startGame(images, gridSize);
+                });
+
+                $('#levelPanel :radio').change(function (e) {
+                    var gridSize = $(this).val();
+                    imagePuzzle.startGame(images, gridSize);
+                });
+            });
+            function rules() {
+                alert('Re arrange the image parts in a way that it correctly forms the picture. \nThe total number of steps taken will be counted.');
+            }
+            function about() {
+                alert('Developed by Wensong Liu & Zheng Wang.');
+            }
+        </script>
+    </div>
+</body>
+</html>
