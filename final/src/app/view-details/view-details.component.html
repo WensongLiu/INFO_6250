@@ -1,0 +1,83 @@
+<!-- <p>
+  view-details works!
+</p> --> 
+
+
+<div id="container">
+  <div id="head">
+      <div id="menu_header">
+          <span id="head_left" class="yellow"></span>
+          <!-- <span id="head_right" class="yellow">Your balance is @ViewBag.User.balance!</span> -->
+      </div>
+  </div>
+  <br />
+  <br />
+  <div id="content">
+      <!-- <div class="login_box">
+          <ul id="nav_list">
+              <li class="li_nav_body">
+                  <form method="post" asp-action="getAllItems" asp-controller="Client">
+                      <input class="sidebar" type="hidden" name="userID" value=@ViewBag.User.userID>
+                      <input class="sidebar" type="submit" name="backHomepageBtn" value="Keep Shopping" />
+                      </form>
+              </li>
+              <li class="li_nav_body">
+                  <form asp-action="LoginPage" asp-controller="Client" method="get">
+                      <input class="sidebar" type="submit" name="LogoutBtn" value="Log out" />
+                  </form>
+              </li>
+              <li class="li_nav_body">
+                  <form asp-controller="Client" asp-action="Crash" method="get">
+                      <input class="sidebar" type="submit" name="CrashBtn" value="Crash" />
+                  </form>
+              </li>
+          </ul>
+      </div> -->
+
+      <div class="content_box_photo">
+          <h3 class="yellow">Hi, these are the details of Order: {{details[0].orderID}} </h3>
+          <div class="content">
+              <table class="shoppingcart">
+                  <thead>
+                      <tr id="tablehead" style="text-align:center; font-size:9px">
+                          <th>
+                              Item ID
+                          </th>
+                          <th>
+                              Item Name
+                          </th>
+                          <th>
+                              Item Size
+                          </th>
+                          <th>
+                              Item Amonut
+                          </th>
+                          <th>
+                              Item Prive
+                          </th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr id="tablerow" style="text-align: center;" *ngFor="let order of details">
+                          <td>
+                              {{order.itemID}}
+                          </td>
+                          <td>
+                              {{order.itemName}}
+                          </td>
+                          <td>
+                              {{order.itemSize}}
+                          </td>
+                          <td>
+                              {{order.itemBought}}
+                          </td>
+                          <td>
+                              {{order.itemPrice}}
+                          </td>
+                      </tr>     
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>

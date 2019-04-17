@@ -8,6 +8,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { LoginComponent } from './login/login.component';
+import { ViewDetailsComponent } from './view-details/view-details.component';
 
 
 
@@ -15,7 +16,8 @@ import { LoginComponent } from './login/login.component';
   declarations : [
     AppComponent,
     LoginComponent,
-    OrderHistoryComponent
+    OrderHistoryComponent,
+    ViewDetailsComponent
   ],
   imports :[
     BrowserModule,

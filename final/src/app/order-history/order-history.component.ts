@@ -13,19 +13,25 @@ import { Router } from '@angular/router';
 import { Alert, promise } from 'selenium-webdriver';
 import { OrderInfo } from '../shared/classes/OrderInfo';
 import { OrderDetailService } from '../shared/services/order-detail.service';
-import { forEach } from '@angular/router/src/utils/collection';
+// import 'rxjs/add/operator/toPromise';
 
 @Component({
   selector: 'app-order-history',
   templateUrl: './order-history.component.html',
-  styleUrls: ['./order-history.component.css']
+  styleUrls: ['./order-history.component.css'],
+  providers: [
+    OrderInfo // added class in the providers
+  ]
 })
 export class OrderHistoryComponent implements OnInit {
 
   constructor(
     private fb : FormBuilder,
+    public orderInfo : OrderInfo,
     public userInfoDetailsService : UserInfoDetailsService, 
-    public getAllOrdersService : GetAllOrdersService
+    public getAllOrdersService : GetAllOrdersService,
+    public orderDetailService: OrderDetailService,
+    public router : Router
   ) {
   }
 
@@ -38,9 +44,8 @@ export class OrderHistoryComponent implements OnInit {
   private user : User= this.userInfoDetailsService.getUserInfoDetails();
   orders : Array<OrderInfo> = [];
   vieworders : Array<OrderInfo> = [];
-  //private order : OrderInfo;
+  details : Array<OrderInfo> = [];
   userID : number  = userModel.userID;
-
 
 
   ngOnInit() {
@@ -62,7 +67,7 @@ export class OrderHistoryComponent implements OnInit {
         );
     });
     await promise_1;
-    //!!!!!!!!!!!!!!!!!!!!!!!!!!!1 this need navigate to homepage !!!!!!!!!!!!!!!!!!!!!!
+    //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! this need navigate to homepage !!!!!!!!!!!!!!!!!!!!!!!!!!
     if(this.orders.length == 0) {
       alert("Oh, you haven't buy anything here, go and get some cool sneakers!");
     }
@@ -82,6 +87,29 @@ export class OrderHistoryComponent implements OnInit {
       this.vieworders.push(this.orders[this.orders.length-1]);
     }
   }
+  //!!!!!!!!!!!!!!!!!!!!!!!!!! this needs to be linked with details component !!!!!!!!!!!!!!!
+  viewdetails(data){
+    for(var i = 0; i < this.orders.length-1; i++){
+      if(this.orders[i].orderID == data.orderID) {
+        this.details.push(this.orders[i]);
+      }
+    }
 
-}
+      // const promise_2 = new Promise((resolve, reject) => {
+        this.orderDetailService.setDetails(this.details);
+    //   .toPromise()
+    //     .then(
+    //       res => { // Success
+    //         this.details = res;
+    //         resolve();
+    //       },         
+    //     );
+    // });
+    // await promise_2;
+        console.log("*********************");
+        console.log(this.details);
+        this.router.navigate(['/orderDetails']);
+        
+    }
 
+  }

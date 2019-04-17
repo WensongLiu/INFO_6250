@@ -38,6 +38,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _order_history_order_history_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./order-history/order-history.component */ "./src/app/order-history/order-history.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _view_details_view_details_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./view-details/view-details.component */ "./src/app/view-details/view-details.component.ts");
+
 
 
 
@@ -45,7 +47,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [
     { path: "", component: _login_login_component__WEBPACK_IMPORTED_MODULE_4__["LoginComponent"] },
-    { path: "orderHistory", component: _order_history_order_history_component__WEBPACK_IMPORTED_MODULE_3__["OrderHistoryComponent"] }
+    { path: "orderHistory", component: _order_history_order_history_component__WEBPACK_IMPORTED_MODULE_3__["OrderHistoryComponent"] },
+    { path: "orderDetails", component: _view_details_view_details_component__WEBPACK_IMPORTED_MODULE_5__["ViewDetailsComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -138,6 +141,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _order_history_order_history_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./order-history/order-history.component */ "./src/app/order-history/order-history.component.ts");
 /* harmony import */ var _login_login_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./login/login.component */ "./src/app/login/login.component.ts");
+/* harmony import */ var _view_details_view_details_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./view-details/view-details.component */ "./src/app/view-details/view-details.component.ts");
+
 
 
 
@@ -157,7 +162,8 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_5__["AppComponent"],
                 _login_login_component__WEBPACK_IMPORTED_MODULE_10__["LoginComponent"],
-                _order_history_order_history_component__WEBPACK_IMPORTED_MODULE_9__["OrderHistoryComponent"]
+                _order_history_order_history_component__WEBPACK_IMPORTED_MODULE_9__["OrderHistoryComponent"],
+                _view_details_view_details_component__WEBPACK_IMPORTED_MODULE_11__["ViewDetailsComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_1__["BrowserModule"],
@@ -347,17 +353,27 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _shared_services_user_info_details_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/services/user-info-details.service */ "./src/app/shared/services/user-info-details.service.ts");
 /* harmony import */ var _shared_services_get_all_orders_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../shared/services/get-all-orders.service */ "./src/app/shared/services/get-all-orders.service.ts");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shared_classes_OrderInfo__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../shared/classes/OrderInfo */ "./src/app/shared/classes/OrderInfo.ts");
+/* harmony import */ var _shared_services_order_detail_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../shared/services/order-detail.service */ "./src/app/shared/services/order-detail.service.ts");
 
 
 
 
 
 
+
+
+
+// import 'rxjs/add/operator/toPromise';
 var OrderHistoryComponent = /** @class */ (function () {
-    function OrderHistoryComponent(fb, userInfoDetailsService, getAllOrdersService) {
+    function OrderHistoryComponent(fb, orderInfo, userInfoDetailsService, getAllOrdersService, orderDetailService, router) {
         this.fb = fb;
+        this.orderInfo = orderInfo;
         this.userInfoDetailsService = userInfoDetailsService;
         this.getAllOrdersService = getAllOrdersService;
+        this.orderDetailService = orderDetailService;
+        this.router = router;
         this.viewdetailsForm = this.fb.group({
             orderID: [''],
             orderDate: [''],
@@ -366,7 +382,7 @@ var OrderHistoryComponent = /** @class */ (function () {
         this.user = this.userInfoDetailsService.getUserInfoDetails();
         this.orders = [];
         this.vieworders = [];
-        //private order : OrderInfo;
+        this.details = [];
         this.userID = _shared_classes_userModel__WEBPACK_IMPORTED_MODULE_1__["default"].userID;
     }
     OrderHistoryComponent.prototype.ngOnInit = function () {
@@ -377,7 +393,7 @@ var OrderHistoryComponent = /** @class */ (function () {
     };
     OrderHistoryComponent.prototype.getOrders = function () {
         return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
-            var promise_1;
+            var promise_1, i;
             var _this = this;
             return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
                 switch (_a.label) {
@@ -393,29 +409,68 @@ var OrderHistoryComponent = /** @class */ (function () {
                         return [4 /*yield*/, promise_1];
                     case 1:
                         _a.sent();
-                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!1 this need navigate to homepage !!!!!!!!!!!!!!!!!!!!!!
+                        //!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! this need navigate to homepage !!!!!!!!!!!!!!!!!!!!!!!!!!
                         if (this.orders.length == 0) {
                             alert("Oh, you haven't buy anything here, go and get some cool sneakers!");
                         }
+                        else if (this.orders.length == 1) {
+                            if (this.orders[0].orderID == this.orders[1].orderID)
+                                this.vieworders.push(this.orders[0]);
+                            else {
+                                this.vieworders.push(this.orders[0]);
+                                this.vieworders.push(this.orders[1]);
+                            }
+                        }
                         else {
-                            console.log(this.orders[0].itemName);
-                            console.log(this.orders[1].itemName);
-                            console.log(this.orders[2].itemName);
+                            for (i = 0; i < this.orders.length - 2; i++) {
+                                if (this.orders[i].orderID != this.orders[i + 1].orderID) {
+                                    this.vieworders.push(this.orders[i]);
+                                }
+                            }
+                            this.vieworders.push(this.orders[this.orders.length - 1]);
                         }
                         return [2 /*return*/];
                 }
             });
         });
     };
+    //!!!!!!!!!!!!!!!!!!!!!!!!!! this needs to be linked with details component !!!!!!!!!!!!!!!
+    OrderHistoryComponent.prototype.viewdetails = function (data) {
+        for (var i = 0; i < this.orders.length - 1; i++) {
+            if (this.orders[i].orderID == data.orderID) {
+                this.details.push(this.orders[i]);
+            }
+        }
+        // const promise_2 = new Promise((resolve, reject) => {
+        this.orderDetailService.setDetails(this.details);
+        //   .toPromise()
+        //     .then(
+        //       res => { // Success
+        //         this.details = res;
+        //         resolve();
+        //       },         
+        //     );
+        // });
+        // await promise_2;
+        console.log("*********************");
+        console.log(this.details);
+        this.router.navigate(['/orderDetails']);
+    };
     OrderHistoryComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Component"])({
             selector: 'app-order-history',
             template: __webpack_require__(/*! ./order-history.component.html */ "./src/app/order-history/order-history.component.html"),
+            providers: [
+                _shared_classes_OrderInfo__WEBPACK_IMPORTED_MODULE_7__["OrderInfo"] // added class in the providers
+            ],
             styles: [__webpack_require__(/*! ./order-history.component.css */ "./src/app/order-history/order-history.component.css")]
         }),
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_forms__WEBPACK_IMPORTED_MODULE_5__["FormBuilder"],
+            _shared_classes_OrderInfo__WEBPACK_IMPORTED_MODULE_7__["OrderInfo"],
             _shared_services_user_info_details_service__WEBPACK_IMPORTED_MODULE_3__["UserInfoDetailsService"],
-            _shared_services_get_all_orders_service__WEBPACK_IMPORTED_MODULE_4__["GetAllOrdersService"]])
+            _shared_services_get_all_orders_service__WEBPACK_IMPORTED_MODULE_4__["GetAllOrdersService"],
+            _shared_services_order_detail_service__WEBPACK_IMPORTED_MODULE_8__["OrderDetailService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]])
     ], OrderHistoryComponent);
     return OrderHistoryComponent;
 }());
@@ -442,6 +497,26 @@ var LoginInfo = /** @class */ (function () {
         this.pwd = pwd;
     }
     return LoginInfo;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/shared/classes/OrderInfo.ts":
+/*!*********************************************!*\
+  !*** ./src/app/shared/classes/OrderInfo.ts ***!
+  \*********************************************/
+/*! exports provided: OrderInfo */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderInfo", function() { return OrderInfo; });
+var OrderInfo = /** @class */ (function () {
+    function OrderInfo() {
+    }
+    return OrderInfo;
 }());
 
 
@@ -547,6 +622,46 @@ var LoginService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/shared/services/order-detail.service.ts":
+/*!*********************************************************!*\
+  !*** ./src/app/shared/services/order-detail.service.ts ***!
+  \*********************************************************/
+/*! exports provided: OrderDetailService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "OrderDetailService", function() { return OrderDetailService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+
+
+var OrderDetailService = /** @class */ (function () {
+    function OrderDetailService() {
+        this.orderDetails = [];
+    }
+    OrderDetailService.prototype.setDetails = function (details) {
+        for (var i = 0; i < details.length - 1; i++) {
+            this.orderDetails.push(details[i]);
+        }
+        return this.orderDetails;
+    };
+    OrderDetailService.prototype.sendDetails = function () {
+        return this.orderDetails;
+    };
+    OrderDetailService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+            providedIn: 'root'
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+    ], OrderDetailService);
+    return OrderDetailService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/shared/services/user-info-details.service.ts":
 /*!**************************************************************!*\
   !*** ./src/app/shared/services/user-info-details.service.ts ***!
@@ -588,6 +703,96 @@ var UserInfoDetailsService = /** @class */ (function () {
         tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
     ], UserInfoDetailsService);
     return UserInfoDetailsService;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/view-details/view-details.component.css":
+/*!*********************************************************!*\
+  !*** ./src/app/view-details/view-details.component.css ***!
+  \*********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3ZpZXctZGV0YWlscy92aWV3LWRldGFpbHMuY29tcG9uZW50LmNzcyJ9 */"
+
+/***/ }),
+
+/***/ "./src/app/view-details/view-details.component.html":
+/*!**********************************************************!*\
+  !*** ./src/app/view-details/view-details.component.html ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+module.exports = "<!-- <p>\n  view-details works!\n</p> --> \n\n\n<div id=\"container\">\n  <div id=\"head\">\n      <div id=\"menu_header\">\n          <span id=\"head_left\" class=\"yellow\"></span>\n          <!-- <span id=\"head_right\" class=\"yellow\">Your balance is @ViewBag.User.balance!</span> -->\n      </div>\n  </div>\n  <br />\n  <br />\n  <div id=\"content\">\n      <!-- <div class=\"login_box\">\n          <ul id=\"nav_list\">\n              <li class=\"li_nav_body\">\n                  <form method=\"post\" asp-action=\"getAllItems\" asp-controller=\"Client\">\n                      <input class=\"sidebar\" type=\"hidden\" name=\"userID\" value=@ViewBag.User.userID>\n                      <input class=\"sidebar\" type=\"submit\" name=\"backHomepageBtn\" value=\"Keep Shopping\" />\n                      </form>\n              </li>\n              <li class=\"li_nav_body\">\n                  <form asp-action=\"LoginPage\" asp-controller=\"Client\" method=\"get\">\n                      <input class=\"sidebar\" type=\"submit\" name=\"LogoutBtn\" value=\"Log out\" />\n                  </form>\n              </li>\n              <li class=\"li_nav_body\">\n                  <form asp-controller=\"Client\" asp-action=\"Crash\" method=\"get\">\n                      <input class=\"sidebar\" type=\"submit\" name=\"CrashBtn\" value=\"Crash\" />\n                  </form>\n              </li>\n          </ul>\n      </div> -->\n\n      <div class=\"content_box_photo\">\n          <h3 class=\"yellow\">Hi, these are the details of Order: {{details[0].orderID}} </h3>\n          <div class=\"content\">\n              <table class=\"shoppingcart\">\n                  <thead>\n                      <tr id=\"tablehead\" style=\"text-align:center; font-size:9px\">\n                          <th>\n                              Item ID\n                          </th>\n                          <th>\n                              Item Name\n                          </th>\n                          <th>\n                              Item Size\n                          </th>\n                          <th>\n                              Item Amonut\n                          </th>\n                          <th>\n                              Item Prive\n                          </th>\n                      </tr>\n                  </thead>\n                  <tbody>\n                      <tr id=\"tablerow\" style=\"text-align: center;\" *ngFor=\"let order of details\">\n                          <td>\n                              {{order.itemID}}\n                          </td>\n                          <td>\n                              {{order.itemName}}\n                          </td>\n                          <td>\n                              {{order.itemSize}}\n                          </td>\n                          <td>\n                              {{order.itemBought}}\n                          </td>\n                          <td>\n                              {{order.itemPrice}}\n                          </td>\n                      </tr>     \n                  </tbody>\n              </table>\n          </div>\n      </div>\n  </div>\n</div>\n"
+
+/***/ }),
+
+/***/ "./src/app/view-details/view-details.component.ts":
+/*!********************************************************!*\
+  !*** ./src/app/view-details/view-details.component.ts ***!
+  \********************************************************/
+/*! exports provided: ViewDetailsComponent */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ViewDetailsComponent", function() { return ViewDetailsComponent; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _shared_services_order_detail_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../shared/services/order-detail.service */ "./src/app/shared/services/order-detail.service.ts");
+
+
+
+
+// import 'rxjs/add/operator/toPromise';
+var ViewDetailsComponent = /** @class */ (function () {
+    function ViewDetailsComponent(orderDetailService, router) {
+        this.orderDetailService = orderDetailService;
+        this.router = router;
+        this.details = [];
+    }
+    ViewDetailsComponent.prototype.ngOnInit = function () {
+        this.viewDetails();
+    };
+    ViewDetailsComponent.prototype.viewDetails = function () {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function () {
+            var promise;
+            var _this = this;
+            return tslib__WEBPACK_IMPORTED_MODULE_0__["__generator"](this, function (_a) {
+                switch (_a.label) {
+                    case 0:
+                        promise = new Promise(function (resolve, reject) {
+                            _this.details = _this.orderDetailService.sendDetails()
+                                .toPromise()
+                                .then(function (res) {
+                                _this.details = res;
+                                console.log(_this.details);
+                                resolve();
+                            });
+                        });
+                        return [4 /*yield*/, promise];
+                    case 1:
+                        _a.sent();
+                        return [2 /*return*/];
+                }
+            });
+        });
+    };
+    ViewDetailsComponent = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+            selector: 'app-view-details',
+            template: __webpack_require__(/*! ./view-details.component.html */ "./src/app/view-details/view-details.component.html"),
+            styles: [__webpack_require__(/*! ./view-details.component.css */ "./src/app/view-details/view-details.component.css")]
+        }),
+        tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_shared_services_order_detail_service__WEBPACK_IMPORTED_MODULE_3__["OrderDetailService"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])
+    ], ViewDetailsComponent);
+    return ViewDetailsComponent;
 }());
 
 
