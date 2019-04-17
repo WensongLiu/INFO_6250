@@ -11,7 +11,7 @@ import { User} from '../classes/User';
 @Injectable({
   providedIn: 'root'
 })
-export class AppService {
+export class LoginService {
 
   constructor(
     private http:HttpClient

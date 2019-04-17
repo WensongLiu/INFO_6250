@@ -5,8 +5,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { Http, Response } from '@angular/http';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-import { AppService } from '../shared/services/login.service';
+import { LoginService } from '../shared/services/login.service';
+import { UserInfoDetailsService } from '../shared/services/user-info-details.service'
 import { User } from '../shared/classes/User';
+import userModel from '../shared/classes/userModel';
 import { Router } from '@angular/router';
 import { Alert } from 'selenium-webdriver';
 
@@ -19,7 +21,6 @@ export class LoginComponent implements OnInit {
 
   title = "Sneaker Website Login Page";
   user:User;
-  //private apiURL = "https://sneakerx-api-final.azurewebsites.net";
 
   loginInfoForm = this.fb.group({
     emailAddress: [''],
@@ -29,7 +30,7 @@ export class LoginComponent implements OnInit {
   loginInfo: LoginInfo;
   
 
-  constructor(private fb: FormBuilder, private AppService: AppService, private router : Router) {
+  constructor(private fb: FormBuilder, private loginService: LoginService, private router : Router, public userInfoDetailsService: UserInfoDetailsService) {
     // console.log("Try to get API");
     // this.loginInfo = new LoginInfo(this.loginInfoForm.value.emailAddress, this.loginInfoForm.value.password);
     // this.conacts();
@@ -56,7 +57,7 @@ export class LoginComponent implements OnInit {
     //console.log(this.loginInfo.emailAddress);
     
       const promise = new Promise((resolve, reject) => {
-        this.AppService.login(this.loginInfo)
+        this.loginService.login(this.loginInfo)
           .toPromise()
           .then(
             res => { // Success
@@ -79,7 +80,9 @@ export class LoginComponent implements OnInit {
         alert('Please register first!');
       }
       else {
-        console.log("tiao");
+        //console.log("tiao");
+        //console.log(this.user.balance);
+        this.userInfoDetailsService.setUserInfoDetails(this.user);
         this.router.navigate(['/orderHistory'])};
     }
   }

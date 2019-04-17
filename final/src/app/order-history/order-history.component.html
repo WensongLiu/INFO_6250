@@ -1,3 +1,82 @@
 <p>
-  order-history works!
+  order-history works, this is {{user.userID}} order!
 </p>
+
+<div id="container">
+  <div id="head">
+      <div id="menu_header">
+          <span id="head_left" class="yellow"></span>
+          <span id="head_right" class="yellow">Your balance is {{user.balance}}!</span>
+      </div>
+  </div>
+  <br />
+  <br />
+  <div id="content">
+      <!-- <div class="login_box">
+          <ul id="nav_list">
+              <li class="li_nav_body">
+                  <form method="post" asp-action="getAllItems" asp-controller="Client">
+                      <input class="sidebar" type="hidden" name="userID" value=@ViewBag.User.userID>
+                      <input class="sidebar" type="submit" name="backHomepageBtn" value="Keep Shopping" />
+                  </form>
+              </li>
+              <li class="li_nav_body">
+                  <form asp-action="LoginPage" asp-controller="Client" method="get">
+                      <input class="sidebar" type="submit" name="LogoutBtn" value="Log out" />
+                  </form>
+              </li>
+              <li class="li_nav_body">
+                  <form asp-controller="Client" asp-action="Crash" method="get">
+                      <input class="sidebar" type="submit" name="CrashBtn" value="Crash" />
+                  </form>
+              </li>
+          </ul>
+      </div> -->
+
+      <div class="content_box_photo">
+          <div>
+              <br />
+          </div>
+          <div class="content">
+              <h3 class="yellow">Hi, {{user.userName}}, here is all your order history!</h3>
+              <table class="shoppingcart">
+                  <thead>
+                      <tr id="tablehead" style="text-align:center; font-size:9px">
+                          <th>
+                              Order ID
+                          </th>
+                          <th>
+                              Order Date
+                          </th>
+                          <th>
+                              Order Cost
+                          </th>
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    
+                      <tr id="tablerow" *ngFor="let order of vieworders">
+                        <!-- <form [formGroup]="ordersForm" class="form"> -->
+                          <td>
+                              <input style="text-align:center;" type="text" name="orderID" value={{order.orderID}} readonly="readonly" />
+                          </td>
+                          <td>
+                              <input style="text-align:center;" type="text" name="orderDate" value={{order.orderDate}} readonly="readonly" />
+                          </td>
+                          <td>
+                              <input style="text-align:center;" type="text" name="totalCost" value={{order.totalCost}} readonly="readonly" />
+                          </td>
+                          <td>
+                              <button type="submit" (click)="viewdetails(order)" name="viewdetailsBtn" style="width:150px;text-align:center;" class="enter">View This Order Details</button>
+                          </td>
+                          <!-- </form> -->
+                      </tr>
+                  
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+</div>
+
