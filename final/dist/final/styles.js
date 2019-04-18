@@ -557,7 +557,7 @@ if(false) {}
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/G/Desktop/angular/src/styles.css */"./src/styles.css");
+module.exports = __webpack_require__(/*! /Users/G/Documents/2019_Spring/web_tools_6250/angular/src/styles.css */"./src/styles.css");
 
 
 /***/ })

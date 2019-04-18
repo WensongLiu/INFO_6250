@@ -86,11 +86,12 @@ export class CartComponent implements OnInit {
     });
     await promise;
     console.log("after checkout:"+this.user.balance);
-    alert("Checkout successfully, but due to internet traffic jams, there will be a little delay for your order history updating, please check it later! During this time you can enjoy a puzzle game if you want!");
+    alert("Checkout successfully, but due to internet traffic jams, there will be a little delay for your order history updating, please hold on this page and return later! During this time, let's begin a puzzle game!");
     this.onNavigate();
     setTimeout(() => {
       this.router.navigate(['/home']);
-    },5000);
+      alert("Congratulatations, your order has been completed now, enjoy your new sneakers!");
+    },30000);
     }
   }
 

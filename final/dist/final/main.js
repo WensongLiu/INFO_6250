@@ -341,7 +341,8 @@ var CartComponent = /** @class */ (function () {
                         this.onNavigate();
                         setTimeout(function () {
                             _this.router.navigate(['/home']);
-                        }, 5000);
+                            alert("Congratulatations, your order has been completed now, enjoy your new sneakers!");
+                        }, 30000);
                         _a.label = 3;
                     case 3: return [2 /*return*/];
                 }
@@ -1737,7 +1738,7 @@ Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformB
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/G/Desktop/angular/src/main.ts */"./src/main.ts");
+module.exports = __webpack_require__(/*! /Users/G/Documents/2019_Spring/web_tools_6250/angular/src/main.ts */"./src/main.ts");
 
 
 /***/ })
