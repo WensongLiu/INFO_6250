@@ -11,6 +11,7 @@ export class OrderDetailService {
   orderDetails : Array<OrderInfo> = [];
 
   setDetails(details : OrderInfo[]):any{
+    this.orderDetails = [];
     for(var i = 0; i < details.length-1; i++){
       this.orderDetails.push(details[i]);
     }

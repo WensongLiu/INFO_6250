@@ -83,8 +83,12 @@ export class LoginComponent implements OnInit {
         //console.log("tiao");
         //console.log(this.user.balance);
         this.userInfoDetailsService.setUserInfoDetails(this.user);
-        this.router.navigate(['/orderHistory'])};
+        this.router.navigate(['/home'])};
     }
+  }
+
+  toRegister(){
+    this.router.navigate(['/register']);
   }
 
 }

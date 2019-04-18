@@ -1,4 +1,3 @@
-<p>Sneker Shopping Website</p>
 <h3 *ngIf="user">{{user.userName}}</h3>
 <div id="container">
   <div id="head">
@@ -38,7 +37,12 @@
                   <br />
                   <div>
                       <button type="submit" (click)="onLogin()" name="loginBtn" style="width:150px" class="enter">Log In</button>
-                  </div>     
+                  </div>  
+                  <br />
+                  <br />
+                  <div>
+                    <input type="submit" (click)="toRegister()" name="registerBtn" value="Register" style="width:150px" class="enter" />
+                  </div>   
               </form>
               
           </div>
@@ -46,4 +50,3 @@
   </div>
   
 </div>
-<router-outlet></router-outlet>

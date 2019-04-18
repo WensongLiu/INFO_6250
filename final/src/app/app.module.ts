@@ -9,6 +9,10 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { OrderHistoryComponent } from './order-history/order-history.component';
 import { LoginComponent } from './login/login.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
+import { CartComponent } from './cart/cart.component';
+import { HomePageComponent } from './home-page/home-page.component';
+import { RegistComponent } from './regist/regist.component';
+import { UpdateInfoComponent } from './update-info/update-info.component';
 
 
 
@@ -17,7 +21,11 @@ import { ViewDetailsComponent } from './view-details/view-details.component';
     AppComponent,
     LoginComponent,
     OrderHistoryComponent,
-    ViewDetailsComponent
+    ViewDetailsComponent,
+    CartComponent,
+    HomePageComponent,
+    RegistComponent,
+    UpdateInfoComponent
   ],
   imports :[
     BrowserModule,

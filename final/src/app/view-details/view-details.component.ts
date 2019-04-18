@@ -22,15 +22,16 @@ import { OrderDetailService } from '../shared/services/order-detail.service';
 })
 export class ViewDetailsComponent implements OnInit {
 
-  details : Array<OrderInfo> = []
+  details: Array<OrderInfo> = []
+  user: User;
 
   constructor(
     public orderDetailService: OrderDetailService,
-    public router : Router,
+    public router: Router,
   ) { }
 
   ngOnInit(
-    
+
   ) {
     console.log("!!!!!!!!!!!!!!!!!!!!!!!");
     console.log(this.details);
@@ -38,9 +39,9 @@ export class ViewDetailsComponent implements OnInit {
     console.log(this.details);
   }
 
-viewDetails(){
+  viewDetails() {
     // const promise = new Promise((resolve, reject) => {
-      this.details = this.orderDetailService.sendDetails();
+    this.details = this.orderDetailService.sendDetails();
     //   .toPromise()
     //     .then(
     //       res => { // Success           
@@ -50,5 +51,13 @@ viewDetails(){
     //     );
     // });
     // await promise;
+  }
+  toHome() {
+    this.router.navigate(['/home']);
+  }
+
+  logOut() {
+    this.user = userModel;
+    this.router.navigate(['/login']);
   }
 }
